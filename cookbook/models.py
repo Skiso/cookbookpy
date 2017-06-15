@@ -1,0 +1,49 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+class Recette(models.Model):
+    TYPES = (
+        ('E', "Entrée"),
+        ('P', "Plat principal"),
+        ('D', "Dessert"),
+    )
+
+    DIFFICULTE = (
+        ('1', "Simple"),
+        ('2', "Moyen"),
+        ('3', "Difficile"),
+    )
+
+    # Champs
+    titre = models.CharField(max_length=200, verbose_name="titre")
+    type = models.CharField(max_length=1,choices=TYPES, verbose_name="type de plat")
+    difficulte = models.CharField(blank=True, max_length=1, choices=DIFFICULTE, verbose_name="difficulte")
+    cout = models.IntegerField(blank=True, verbose_name="Coût de la recette")
+    temps_prepa = models.DurationField(blank=True, null=True, verbose_name="temps de préparation")
+    temps_cuisson = models.DurationField(blank=True, null=True, verbose_name="temps de cuisson")
+    temps_repos = models.DurationField(blank=True, null=True, verbose_name="temps de repos")
+    valide = models.BooleanField(default=False, verbose_name="validé ?")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="id_user")
+
+class Commentaire(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commentaire_user")
+    texte = models.TextField(verbose_name="Texte")
+    date = models.DateField(auto_now_add=True, verbose_name="date du commentaire")
+    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="commentaire_recette")
+
+class Note(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="note_user")
+    note = models.IntegerField(verbose_name="Note de la recette")
+    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="note_recette")
+
+class Etapes_Recette(models.Model):
+    texte_etapes = models.TextField(verbose_name="Etapes de la recette")
+    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="etape_recette")
+    ordre = models.IntegerField(verbose_name="ordre des étapes")
+
+class Ingredients(models.Model):
+    nom = models.CharField(max_length=30, verbose_name="Nom de l'ingrédient")
+
+class Liste_Ingredients(models.Model):
+    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="inredient_recette")
+    ingredients = models.ForeignKey(Ingredients, on_delete=models.CASCADE, related_name="id_ingredient")
