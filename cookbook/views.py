@@ -3,7 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from cookbook.forms import ConnexionForm, RecetteForm
+from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm
 from cookbook.models import Recette, Ingredients, Liste_Ingredients, Etapes_Recette, Note, Commentaire
 
 
@@ -34,29 +34,18 @@ def afficher(request):
 
 def connexion(request):
     error = False
-
     if request.method == "POST":
-
         form = ConnexionForm(request.POST)
-
         if form.is_valid():
-
             username = form.cleaned_data["username"]
-
             password = form.cleaned_data["password"]
-
             user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
 
             if user:  # Si l'objet renvoyé n'est pas None
-
                 login(request, user)  # nous connectons l'utilisateur
-
             else:  # sinon une erreur sera affichée
-
                 error = True
-
     else:
-
         form = ConnexionForm()
 
     return render(request, 'cookbook/connexion.html', locals())
@@ -64,21 +53,23 @@ def connexion(request):
 
 def ajouter(request):
     MainForm = RecetteForm()
-
+    EtapeFormu = EtapesForm()
     if request.method == 'POST':
         MainForm = RecetteForm(request.POST)
         if MainForm.is_valid():
             recettes = MainForm.save()
             recettes.user = request.user
-
+            recettes.save()
+            EtapeFormu = EtapesForm(request.POST, instance=recettes)
+            if EtapeFormu.is_valid():
+                EtapeFormu.save()
             return render(request, "cookbook/nouvelle_recette.html", {
                 'MainForm': MainForm,
-
+                'EtapeForm': EtapeFormu,
                 'create_success': 'success'
             })
 
-
     return render(request, "cookbook/nouvelle_recette.html", {
         'MainForm': MainForm,
-
+        'EtapeForm': EtapeFormu,
     })
