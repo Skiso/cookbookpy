@@ -25,6 +25,9 @@ class Recette(models.Model):
     valide = models.BooleanField(default=False, verbose_name="validé ?")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="id_user")
 
+    def __str__(self):
+        return self.titre
+
 class Commentaire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commentaire_user")
     texte = models.TextField(verbose_name="Texte")
@@ -43,6 +46,9 @@ class Etapes_Recette(models.Model):
 
 class Ingredients(models.Model):
     nom = models.CharField(max_length=30, verbose_name="Nom de l'ingrédient")
+
+    def __str__(self):
+        return self.nom
 
 class Liste_Ingredients(models.Model):
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="inredient_recette")
