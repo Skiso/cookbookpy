@@ -14,5 +14,5 @@ class RecetteForm(forms.ModelForm):
     required_css_class = 'required'
     class Meta:
         model = Recette
-        fields = '__all__'
+        fields = ['titre', 'type', 'difficulte', 'cout', 'temps_prepa', 'temps_cuisson', 'temps_repos']
 
