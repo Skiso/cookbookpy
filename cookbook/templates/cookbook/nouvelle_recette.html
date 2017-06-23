@@ -1,0 +1,27 @@
+{% extends 'cookbook/_base.html' %}
+{% block titre %}Création de recettes{% endblock %}
+{% block contenu %}
+    <div id="content">
+
+        <!-- title -->
+        <span class="title">Ajouter une recette</span>
+        <span class="subtitle">Vous voulez ajouter une recette ? C'est ici que ça se passe !</span>
+
+
+        {% if success_message %}
+        <h5 class="create_success"><b style="color: green">Votre recette a bien été créée !</b></h5>
+         {% endif %}
+        <!-- ENDS title -->
+
+
+        <form method="post" action="{% url 'ajouter' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+                <h4>Recette :</h4>
+                {{ MainForm.as_p }}
+
+            <input type="submit" value="OK" />
+        </form>
+
+    </div>
+{% endblock %}
