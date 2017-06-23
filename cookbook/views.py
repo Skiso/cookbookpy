@@ -3,16 +3,18 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from cookbook.forms import ConnexionForm
+from cookbook.forms import ConnexionForm, RecetteForm
 from cookbook.models import Recette, Ingredients, Liste_Ingredients, Etapes_Recette, Note, Commentaire
+
 
 # Create your views here.
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+
 def afficher(request):
     recettes = Recette.objects.all();
-    typeObjet=None
+    typeObjet = None
     paginator = Paginator(recettes, 10)
     page = request.GET.get('page')
     try:
@@ -29,8 +31,8 @@ def afficher(request):
     }
     return render(request, 'cookbook/afficher.html', contexte)
 
-def connexion(request):
 
+def connexion(request):
     error = False
 
     if request.method == "POST":
@@ -49,7 +51,7 @@ def connexion(request):
 
                 login(request, user)  # nous connectons l'utilisateur
 
-            else: # sinon une erreur sera affichée
+            else:  # sinon une erreur sera affichée
 
                 error = True
 
@@ -57,5 +59,26 @@ def connexion(request):
 
         form = ConnexionForm()
 
-
     return render(request, 'cookbook/connexion.html', locals())
+
+
+def ajouter(request):
+    MainForm = RecetteForm()
+
+    if request.method == 'POST':
+        MainForm = RecetteForm(request.POST)
+        if MainForm.is_valid():
+            recettes = MainForm.save()
+            recettes.user = request.user
+
+            return render(request, "cookbook/nouvelle_recette.html", {
+                'MainForm': MainForm,
+
+                'create_success': 'success'
+            })
+
+
+    return render(request, "cookbook/nouvelle_recette.html", {
+        'MainForm': MainForm,
+
+    })
