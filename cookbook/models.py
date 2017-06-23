@@ -23,7 +23,7 @@ class Recette(models.Model):
     temps_cuisson = models.DurationField(blank=True, null=True, verbose_name="temps de cuisson")
     temps_repos = models.DurationField(blank=True, null=True, verbose_name="temps de repos")
     valide = models.BooleanField(default=False, verbose_name="validé ?")
-    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="id_user")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="id_user")
 
 class Commentaire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commentaire_user")
