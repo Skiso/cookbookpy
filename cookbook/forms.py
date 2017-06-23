@@ -16,3 +16,10 @@ class RecetteForm(forms.ModelForm):
         model = Recette
         fields = ['titre', 'type', 'difficulte', 'cout', 'temps_prepa', 'temps_cuisson', 'temps_repos']
 
+class EtapesForm(forms.ModelForm):
+    required_css_class = 'required'
+    class Meta:
+        model = Etapes_Recette
+        fields = '__all__'
+
+EtapeFormset = inlineformset_factory(Recette, Etapes_Recette, form=EtapesForm, can_delete=False)
