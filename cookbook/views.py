@@ -1,6 +1,9 @@
+from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render
+
+from cookbook.forms import ConnexionForm
 from cookbook.models import Recette, Ingredients, Liste_Ingredients, Etapes_Recette, Note, Commentaire
 
 # Create your views here.
@@ -25,3 +28,34 @@ def afficher(request):
         'recettes': recettes,
     }
     return render(request, 'cookbook/afficher.html', contexte)
+
+def connexion(request):
+
+    error = False
+
+    if request.method == "POST":
+
+        form = ConnexionForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+
+            password = form.cleaned_data["password"]
+
+            user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
+
+            if user:  # Si l'objet renvoyé n'est pas None
+
+                login(request, user)  # nous connectons l'utilisateur
+
+            else: # sinon une erreur sera affichée
+
+                error = True
+
+    else:
+
+        form = ConnexionForm()
+
+
+    return render(request, 'cookbook/connexion.html', locals())
