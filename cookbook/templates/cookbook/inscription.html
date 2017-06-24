@@ -1,0 +1,13 @@
+{% extends 'cookbook/_base.html' %}
+{% block contenu %}
+
+    <h1>Inscription</h1>
+
+    <form id="registration_form" class="form" method="post" action="{% url 'inscription' %}">
+        {% csrf_token %}
+
+            {{ formulaire_user.as_p }}
+
+        <input type="submit" value="Inscription"/>
+    </form>
+{% endblock %}
