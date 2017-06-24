@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-
-from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm
-from cookbook.models import Recette, Ingredients, Liste_Ingredients, Etapes_Recette, Note, Commentaire
+from django.contrib.auth.forms import AuthenticationForm
+from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm, InscriptionForm
+from cookbook.models import Recette
 
 
 # Create your views here.
@@ -31,26 +32,6 @@ def afficher(request):
     }
     return render(request, 'cookbook/afficher.html', contexte)
 
-
-def connexion(request):
-    error = False
-    if request.method == "POST":
-        form = ConnexionForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            password = form.cleaned_data["password"]
-            user = authenticate(username=username, password=password)  # Nous vérifions si les données sont correctes
-
-            if user:  # Si l'objet renvoyé n'est pas None
-                login(request, user)  # nous connectons l'utilisateur
-            else:  # sinon une erreur sera affichée
-                error = True
-    else:
-        form = ConnexionForm()
-
-    return render(request, 'cookbook/connexion.html', locals())
-
-
 def ajouter(request):
     MainForm = RecetteForm()
     EtapeFormu = EtapesForm()
@@ -73,3 +54,23 @@ def ajouter(request):
         'MainForm': MainForm,
         'EtapeForm': EtapeFormu,
     })
+
+def inscription(request):
+    if request.method == 'POST':
+        user_form = InscriptionForm(request.POST)
+        if user_form.is_valid():
+            user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password1'])
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            user.save()
+            contexte = {
+                'form': AuthenticationForm,
+                'success_message': 'success'
+            }
+            return render(request, 'cookbook/connexion.html', contexte)
+    else:
+        user_form = InscriptionForm()
+    contexte = {
+        'formulaire_user': user_form,
+    }
+    return render(request, 'cookbook/inscription.html', contexte)
