@@ -1,36 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Connexion</title>
-</head>
-<body>
-<h1>Se connecter</h1>
+{% extends 'cookbook/_base.html' %}
+{% block titre %}Authentification{% endblock %}
+{% block contenu %}
 
+    <h1>Se connecter</h1>
+    {% if success_message %}
+        <h5 class="success_message">Vous venez de créer votre compte. Vous pouvez dès à present vous connecter.</h5>
+    {% endif %}
+    <form method="post" action="{% url 'cookbook.views.inscription' %}">
 
-{% if error %}
+        {% if form.errors %}
+            <p class="errorlist">Votre identifiant et votre mot de passe de matche pas. Merci de vérifier vos informations.</p>
+        {% endif %}
+        {% csrf_token %}
 
-<p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+        {{ form.as_p }}
 
-{% endif %}
+        <input type="submit" class="btn btn-primary" value="Se connecter" />
+    </form>
 
-
-{% if user.is_authenticated %}
-
-Vous êtes connecté, {{ user.username }} !
-
-{% else %}
-
-<form method="post" action=".">
-
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <input type="submit" value="Se connecter" />
-
-</form>
-
-{% endif %}
-</body>
-</html>
+{% endblock %}
