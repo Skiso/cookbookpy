@@ -1,16 +1,15 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.forms import AuthenticationForm
-from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm, InscriptionForm
-from cookbook.models import Recette
+from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm, InscriptionForm, NoteForm
+from cookbook.models import Recette, Note, Etapes_Recette, Ingredients, Liste_Ingredients
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'cookbook/index.html')
 
 
 def afficher(request):
@@ -74,3 +73,41 @@ def inscription(request):
         'formulaire_user': user_form,
     }
     return render(request, 'cookbook/inscription.html', contexte)
+
+def userLogout(request):
+    logout(request)
+    # Redirect to a success page.
+
+def consulter(request, id):
+
+    if (request.method == 'POST'):
+        note_form = NoteForm(request.POST)
+
+
+        if note_form.is_valid():
+            note = note_form.save()
+            note.id_recette = Recette.objects.get(id=id)
+            note.user = request.user
+            note.save()
+
+
+    recette = Recette.objects.get(id=id)
+    etapes = Etapes_Recette.objects.filter(id_recette=id)
+    ingredients = Ingredients.objects.filter(id_recette=id)
+    note = Note.objects.filter(id_recette=id).aggregate(Avg('valeur'))
+    noted = 0
+    if(request.user.is_authenticated()):
+        noted = Note.objects.filter(id_recette=id, user=request.user).count()
+    form_note = ''
+    if noted == 0:
+        form_note = NoteForm();
+
+    contexte = {
+        'recette'    : recette,
+        'etapes'     : etapes,
+        'ingredients': ingredients,
+        'notes'     : note,
+        'form_note': form_note,
+
+    }
+    return render(request, 'cookbook/consulter.html', contexte)
