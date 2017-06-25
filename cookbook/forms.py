@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import inlineformset_factory
 
-from cookbook.models import Recette, Liste_Ingredients, Etapes_Recette
+from cookbook.models import Recette, Liste_Ingredients, Etapes_Recette, Note
 
 
 class ConnexionForm(forms.Form):
@@ -43,3 +43,8 @@ class InscriptionForm(UserCreationForm):
             if commit:
                 user.save()
             return user
+
+class NoteForm(forms.ModelForm):
+    class Meta:
+        model = Note
+        fields = '__all__'
