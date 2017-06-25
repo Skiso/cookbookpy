@@ -1,77 +1,85 @@
-{% extends 'recettes/_base.html' %}
-{% block titre %}{{ recette.titre }}{% endblock %}}
+% extends 'cookbook/_base.html' %}
+{% block titre %}Recette -{{ recette.titre }} {% endblock %}
 {% block contenu %}
 
-                <span class="title">{{ recette.titre }}</span>
-                <span class="subtitle">Type : {{ recette.get_type_recette_display }}</span>
-                <span class="subtitle">Cout : {{ recette.cout }} €</span>
-                <span class="subtitle">Difficulté : {{ recette.get_difficulte_display }}</span>
-
-            <br/><span>Moyenne :   {{ recette.moyenne }} / 5</span>
-
+        <h1> {{ recette.titre }}</h1>
+        <span>
+            <span class="first">Type : {{ recette.type }}</span> -
+            <span>Cout : {{ recette.cout }} €</span> -
+            <span>Difficulté : {{ recette.difficulte }}</span>
+        </span>
+    <div class="note">
+        <div class="note-moyenne">Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</div>
+        <div class="form_note">
             {% if user.is_authenticated %}
                 {% if form_note %}
-                     <form action="{% url 'recettes:consulter' recette.id %}" method="post">
+                     <form action="{% url 'recette:recette' recette.id %}" method="post">
                     {{ form_note }}
                     {% csrf_token %}
-                     <input type="submit" value="Noter !">
+                     <input type="submit" class="btn btn-primary" value="Noter !">
                     </form>
                 {% else %}
-                    <br/>
-                    <span>Vous avez déjà noté !</span>
+                    <span>Vous avez déjà voté !</span>
                 {% endif %}
             {% else %}
-                <a href="{% url 'login' %}">Connectez-vous pour donner une note</a>
+                <a href="{% url 'login' %}">Connectez-vous pour donner une note à cette recette de malade !</a>
             {% endif %}
-
-
-
-            <h4>Est-ce que c'est long à faire ?!</h4>
+        </div>
+    </div>
+    </div>
+    <div class="recette-right col-sm-7">
+        <div class="temps">
             <ul>
-                <li><span>Temps de préparation :</span> {{ recette.temps_preparation }} minutes</li>
                 <li><span>Temps de cuisson :</span> {{ recette.temps_cuisson }} minutes</li>
+                <li><span>Temps de preparation :</span> {{ recette.temps_preparation }} minutes</li>
                 <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>
             </ul>
-
-            <h4>Ingrédients :</h4>
-            <ul>
-                {% for ingredient in ingredients %}
-                    <li> ({{ ingredient.type }}){{ ingredient.libelle }} : {{ ingredient.quantite }} {{ ingredient.unite }}</li>
-                {% endfor %}
-            </ul>
-
-
-        <
+        </div>
+        <div class="etapes">
             <h4> Etapes :</h4>
             <ul>
                 {% for etape in etapes %}
-                    <li> {{ etape.libelle }}  </li>
+                    <li> {{ etape.detail }}  </li>
                 {% endfor %}
             </ul>
+        </div>
+        <div class="ingredients">
+            <h4> Ingrédients :</h4>
+            <ul>
+                {% for ingredient in ingredients %}
+                    <li> {{ ingredient.nom }} : {{ ingredient.quantite }}  </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
-
-            <h3> Commentaires :</h3>
-                <ul>
-                    {% for com in commentaires %}
-                        <li>
-                            <span>{{ com.user }} le {{ com.creation_date }}</span>
-                            <div>{{ com.libelle }}</div>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                {% if form_com %}
-                    <h4>Ajouter un commentaire</h4>
-                    <form action="{% url 'recettes:consulter' recette.id %}" method="post">
-                    {% csrf_token %}
-                        {{ form_com }}
-                        <input type="submit" value="Commenter">
-                    </form>
-                {% else %}
-                    Vous avez déjà commenté !
-                {% endif %}
+    <div class="form_com col-sm-12">
+        <h3> Commentaires :</h3>
+        <div class="commentaire">
+            <ul>
+                {% for com in commentaires %}
+                    <li>
+                        <span>{{ com.user }} le {{ com.created_at }}</span>
+                        <div>{{ com.message }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if user.is_authenticated %}
+            {% if form_com %}
+                <h4>Ajouter un commentaire</h4>
+                <form action="{% url 'recette:recette' recette.id %}" method="post">
+                {{ form_com }}
+                {% csrf_token %}
+                 <input type="submit" class="btn btn-primary" value="Commenter">
+                </form>
             {% else %}
-                <a href="{% url 'login' %}">Connectez-vous pour laisser un commentaire.</a>
+                Vous avez déjà voté !
             {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}">Connectez-vous pour laisser un commentaire à cette recette de malade !</a>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}
