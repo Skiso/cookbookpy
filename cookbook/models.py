@@ -42,7 +42,6 @@ class Note(models.Model):
 class Etapes_Recette(models.Model):
     texte_etapes = models.TextField(verbose_name="Etapes de la recette")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="etape_recette")
-    ordre = models.IntegerField(verbose_name="ordre des étapes")
 
 class Ingredients(models.Model):
     nom = models.CharField(max_length=30, verbose_name="Nom de l'ingrédient")
