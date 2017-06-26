@@ -6,7 +6,7 @@
     {% if success_message %}
         <h5 class="success_message">Vous venez de créer votre compte. Vous pouvez dès à present vous connecter.</h5>
     {% endif %}
-    <form method="post" action="{% url 'cookbook.views.inscription' %}">
+    <form method="post">
 
         {% if form.errors %}
             <p class="errorlist">Votre identifiant et votre mot de passe de matche pas. Merci de vérifier vos informations.</p>
