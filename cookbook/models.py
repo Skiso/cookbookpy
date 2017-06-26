@@ -22,8 +22,11 @@ class Recette(models.Model):
     temps_prepa = models.DurationField(blank=True, null=True, verbose_name="temps de préparation")
     temps_cuisson = models.DurationField(blank=True, null=True, verbose_name="temps de cuisson")
     temps_repos = models.DurationField(blank=True, null=True, verbose_name="temps de repos")
+    etape = models.TextField(null=True, verbose_name="Etape de la recette")
+    ingredients = models.TextField(null=True, verbose_name="Ingrédients de la recette")
     valide = models.BooleanField(default=False, verbose_name="validé ?")
     user = models.ForeignKey(User, default=False, on_delete=models.CASCADE, related_name="id_user")
+
 
     def __str__(self):
         return self.titre
@@ -39,16 +42,3 @@ class Note(models.Model):
     note = models.IntegerField(verbose_name="Note de la recette")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="note_recette")
 
-class Etapes_Recette(models.Model):
-    texte_etapes = models.TextField(verbose_name="Etapes de la recette")
-    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="etape_recette")
-
-class Ingredients(models.Model):
-    nom = models.CharField(max_length=30, verbose_name="Nom de l'ingrédient")
-
-    def __str__(self):
-        return self.nom
-
-class Liste_Ingredients(models.Model):
-    recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="inredient_recette")
-    ingredients = models.ForeignKey(Ingredients, on_delete=models.CASCADE, related_name="id_ingredient")
