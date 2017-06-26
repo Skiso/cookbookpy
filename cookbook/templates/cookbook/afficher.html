@@ -2,10 +2,14 @@
 {% block titre %}Liste des recettes{% endblock %}
 
 {% block contenu %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'app.css' %}">
+
     <div id="content">
         <div id="page-title">
-                <span class="title">Voici les recettes disponibles, bon ap' !</span>
+            <h1 class="title">Voici les recettes disponibles, bon ap' !</h1>
         </div>
+        <hr>
         <div class="one-column">
             <ul>
             {% for r in recettes %}

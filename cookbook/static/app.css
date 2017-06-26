@@ -1,0 +1,14 @@
+ #page-title{
+     text-align: center;
+ }
+
+ #newrecette-form{
+     text-align: center;
+ }
+
+ #login-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
