@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
+from django.db.models import Avg
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from cookbook.forms import ConnexionForm, RecetteForm, EtapesForm, InscriptionForm, NoteForm
-from cookbook.models import Recette, Note, Etapes_Recette, Ingredients, Liste_Ingredients
+from cookbook.forms import ConnexionForm, RecetteForm, InscriptionForm, NoteForm
+from cookbook.models import Recette, Note
 
 
 # Create your views here.
@@ -33,25 +34,16 @@ def afficher(request):
 
 def ajouter(request):
     MainForm = RecetteForm()
-    EtapeFormu = EtapesForm()
     if request.method == 'POST':
         MainForm = RecetteForm(request.POST)
         if MainForm.is_valid():
             recettes = MainForm.save()
             recettes.user = request.user
             recettes.save()
-            EtapeFormu = EtapesForm(request.POST, instance=recettes)
-            if EtapeFormu.is_valid():
-                EtapeFormu.save()
-            return render(request, "cookbook/nouvelle_recette.html", {
-                'MainForm': MainForm,
-                'EtapeForm': EtapeFormu,
-                'create_success': 'success'
-            })
+            return redirect('afficher')
 
     return render(request, "cookbook/nouvelle_recette.html", {
         'MainForm': MainForm,
-        'EtapeForm': EtapeFormu,
     })
 
 def inscription(request):
@@ -62,21 +54,14 @@ def inscription(request):
             user.first_name = request.POST['first_name']
             user.last_name = request.POST['last_name']
             user.save()
-            contexte = {
-                'form': AuthenticationForm,
-                'success_message': 'success'
-            }
-            return render(request, 'cookbook/connexion.html', contexte)
+            login(request, user)
+            return redirect('afficher')
     else:
         user_form = InscriptionForm()
     contexte = {
         'formulaire_user': user_form,
     }
     return render(request, 'cookbook/inscription.html', contexte)
-
-def userLogout(request):
-    logout(request)
-    # Redirect to a success page.
 
 def consulter(request, id):
 
@@ -92,8 +77,6 @@ def consulter(request, id):
 
 
     recette = Recette.objects.get(id=id)
-    etapes = Etapes_Recette.objects.filter(id_recette=id)
-    ingredients = Ingredients.objects.filter(id_recette=id)
     note = Note.objects.filter(id_recette=id).aggregate(Avg('valeur'))
     noted = 0
     if(request.user.is_authenticated()):
@@ -104,8 +87,6 @@ def consulter(request, id):
 
     contexte = {
         'recette'    : recette,
-        'etapes'     : etapes,
-        'ingredients': ingredients,
         'notes'     : note,
         'form_note': form_note,
 

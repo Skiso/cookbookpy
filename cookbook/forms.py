@@ -1,9 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import inlineformset_factory
 
-from cookbook.models import Recette, Liste_Ingredients, Etapes_Recette, Note
+from cookbook.models import Recette, Note
 
 
 class ConnexionForm(forms.Form):
@@ -14,15 +13,8 @@ class RecetteForm(forms.ModelForm):
     required_css_class = 'required'
     class Meta:
         model = Recette
-        fields = ['titre', 'type', 'difficulte', 'cout', 'temps_prepa', 'temps_cuisson', 'temps_repos']
+        fields = ['titre', 'type', 'difficulte', 'cout', 'temps_prepa', 'temps_cuisson', 'temps_repos','ingredients','etape']
 
-class EtapesForm(forms.ModelForm):
-    required_css_class = 'required'
-    class Meta:
-        model = Etapes_Recette
-        fields = '__all__'
-
-EtapeFormset = inlineformset_factory(Recette, Etapes_Recette, form=EtapesForm, can_delete=False)
 
 class InscriptionForm(UserCreationForm):
     required_css_class = 'required'
