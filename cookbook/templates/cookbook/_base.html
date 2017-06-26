@@ -22,8 +22,11 @@
         <li class="active"><a href="/cookbook">Home</a></li>
         <li><a href="/cookbook/afficher">Toutes les recettes</a></li>
         <li><a href="/cookbook/ajouter">Ajouter une recette</a></li>
-        <li><a href="/cookbook/connexion">Se connecter</a></li>
+        {% if user.is_authenticated %}
         <li><a href="/cookbook/deconnexion">Se deconnecter</a></li>
+        {% else %}
+        <li><a href="/cookbook/connexion">Se connecter</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>
