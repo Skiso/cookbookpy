@@ -6,19 +6,13 @@
 <link rel="stylesheet" href="{% static 'app.css' %}">
 
     <div id="content">
-
         <!-- title -->
         <div id="page-title">
             <h1 class="title" >Ajouter une recette</span>
         </div>
-        <hr>
-        {% if success_message %}
-        <h5><b style="color: green">Votre recette a bien été créée !</b></h5>
-         {% endif %}
-        <!-- ENDS title -->
 
         <form method="post" id='newrecette-form'action="{% url 'ajouter' %}" enctype="multipart/form-data">
-        {% csrf_token %}
+     
                 {{ MainForm.as_p }}
                 {{ EtapeFormu.as_p }}
             <input type="submit" value="Ajouter"  class="btn btn-primary" />
