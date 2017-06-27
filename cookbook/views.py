@@ -6,7 +6,7 @@ from django.db.models import Avg
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from cookbook.forms import ConnexionForm, RecetteForm, InscriptionForm, NoteForm
-from cookbook.models import Recette, Note
+from cookbook.models import Recette, Note, Commentaire
 
 
 # Create your views here.
@@ -70,28 +70,25 @@ def consulter(request, id):
 
     if (request.method == 'POST'):
         note_form = NoteForm(request.POST)
-
-
         if note_form.is_valid():
             note = note_form.save()
             note.id_recette = Recette.objects.get(id=id)
             note.user = request.user
             note.save()
-
-
-    recette = Recette.objects.get(id=id)
-    note = Note.objects.filter(id_recette=id).aggregate(Avg('valeur'))
+    recette = Recette.objects.get(pk=id)
+    commentaire = Commentaire.objects.filter(recette = recette)
+    note = Note.objects.filter(recette=id).aggregate(Avg('note'))
     noted = 0
     if(request.user.is_authenticated()):
-        noted = Note.objects.filter(id_recette=id, user=request.user).count()
+        noted = Note.objects.filter(recette=id, user=request.user).count()
     form_note = ''
     if noted == 0:
         form_note = NoteForm();
 
     contexte = {
-        'recette'    : recette,
-        'notes'     : note,
+        'recette': recette,
+        'note': note,
+        'commentaire':commentaire,
         'form_note': form_note,
-
     }
     return render(request, 'cookbook/consulter.html', contexte)
