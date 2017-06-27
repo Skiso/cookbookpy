@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
@@ -10,7 +11,8 @@ from cookbook.models import Recette, Note
 
 # Create your views here.
 def index(request):
-    return render(request, 'cookbook/index.html')
+
+    return redirect('afficher')
 
 
 def afficher(request):
@@ -32,6 +34,7 @@ def afficher(request):
     }
     return render(request, 'cookbook/afficher.html', contexte)
 
+@login_required
 def ajouter(request):
     MainForm = RecetteForm()
     if request.method == 'POST':

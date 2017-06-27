@@ -1,0 +1,15 @@
+{% extends 'cookbook/_base.html' %}
+{% block titre %}Liste des recettes{% endblock %}
+
+{% block contenu %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'app.css' %}">
+
+    <div id="content">
+        <div id="page-title">
+            <h1 class="title">Accès restreint</h1>
+        </div>
+        <div class="alert alert-danger">Veuillez vous connecter ou vous inscrire pour accèder à cette partie du site.</div>
+
+    </div>
+{% endblock %}
