@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from multiupload.fields import MultiFileField
 
-from cookbook.models import Recette, Note, RecetteImage
+from cookbook.models import Recette, Note, RecetteImage, Commentaire
 
 
 class ConnexionForm(forms.Form):
@@ -48,5 +48,10 @@ class InscriptionForm(UserCreationForm):
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = '__all__'
+        fields = ['note']
 
+class CommentaireForm(forms.ModelForm):
+    libelle = forms.CharField(widget=forms.Textarea(attrs={'cols': 50, 'rows': 4}))
+    class Meta:
+        model = Commentaire
+        fields = ['libelle']

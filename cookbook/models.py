@@ -42,7 +42,7 @@ class Commentaire(models.Model):
 
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="note_user")
-    note = models.IntegerField(default=0, verbose_name="Note de la recette")
+    note = models.IntegerField(verbose_name="Note de la recette")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="note_recette")
 
 class RecetteImage(models.Model):

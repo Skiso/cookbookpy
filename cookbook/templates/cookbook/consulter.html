@@ -31,7 +31,7 @@
         <div class="temps">
             <ul>
                 <li><span>Temps de cuisson :</span> {{ recette.temps_cuisson }} minutes</li>
-                <li><span>Temps de preparation :</span> {{ recette.temps_preparation }} minutes</li>
+                <li><span>Temps de preparation :</span> {{ recette.temps_prepa }} minutes</li>
                 <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>
             </ul>
         </div>
@@ -59,15 +59,15 @@
             </ul>
         </div>
         {% if user.is_authenticated %}
-            {% if form_com %}
+            {% if form_comm %}
                 <h4>Ajouter un commentaire</h4>
-                <form action="{% url 'recette:recette' recette.id %}" method="post">
-                {{ form_com }}
+                <form action="" method="post">
+                {{ form_comm }}
                 {% csrf_token %}
                  <input type="submit" class="btn btn-primary" value="Commenter">
                 </form>
             {% else %}
-                Vous avez déjà voté !
+                Vous avez déjà commenté !
             {% endif %}
         {% else %}
         {% endif %}

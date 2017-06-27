@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
 from django.shortcuts import render, redirect
-from cookbook.forms import RecetteForm, InscriptionForm, NoteForm, RecetteImage
+from cookbook.forms import RecetteForm, InscriptionForm, NoteForm, RecetteImage, CommentaireForm
 from cookbook.models import Recette, Note, Commentaire
 from django.shortcuts import get_object_or_404
 
@@ -68,15 +68,18 @@ def inscription(request):
 @login_required
 def consulter(request, id):
     recette = get_object_or_404(Recette, pk=id)
+    commentaire_formu = CommentaireForm(request.POST)
     if (request.method == 'POST'):
         note_form = NoteForm(request.POST)
         if note_form.is_valid():
-            note = note_form.save()
-            note.id_recette = Recette.objects.get(id=id)
-            note.user = request.user
-            note.save()
+            note_form.recette = Recette.objects.get(recette=id)
+            note_form.user = request.user
+            note_form.save()
+        if commentaire_formu.is_valid():
+            commentaire_formu.id_recette = Recette.objects.get(id=id)
+            commentaire_formu.user = request.user
+            commentaire_formu.save()
 
-    commentaire = Commentaire.objects.filter(recette=recette)
     note = Note.objects.filter(recette=id).aggregate(Avg('note'))
     noted = 0
     if(request.user.is_authenticated()):
@@ -85,6 +88,7 @@ def consulter(request, id):
     if noted == 0:
         form_note = NoteForm()
 
+    commentaire = Commentaire.objects.filter(recette=recette)
     images = RecetteImage.objects.filter(recette=recette)
 
     contexte = {
@@ -92,6 +96,7 @@ def consulter(request, id):
         'note': note,
         'commentaire': commentaire,
         'form_note': form_note,
+        'form_comm': commentaire_formu,
         'images': images,
     }
     return render(request, 'cookbook/consulter.html', contexte)
