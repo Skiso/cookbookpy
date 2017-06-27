@@ -13,7 +13,10 @@
         <div class="one-column">
             <ul>
             {% for r in recettes %}
-                <li><a href="{% url 'consulter' r.id %}">{{ r.titre }}</a></li>
+                <li>
+                    <a href="{% url 'modifier' r.id %}">{{ r.titre }}</a>
+                   <a href="{% url 'modifier' r.id %}"><img src="{% static 'edit.png' %}"></a></img>
+                </li>
             {% endfor %}
             </ul>
         </div>
