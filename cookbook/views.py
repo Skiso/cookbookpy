@@ -1,11 +1,10 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from cookbook.forms import ConnexionForm, RecetteForm, InscriptionForm, NoteForm, RecetteImage
+from cookbook.forms import RecetteForm, InscriptionForm, NoteForm, RecetteImage
 from cookbook.models import Recette, Note, Commentaire
 from django.shortcuts import get_object_or_404
 
@@ -66,6 +65,7 @@ def inscription(request):
     }
     return render(request, 'cookbook/inscription.html', contexte)
 
+@login_required
 def consulter(request, id):
     recette = get_object_or_404(Recette, pk=id)
     if (request.method == 'POST'):
@@ -86,7 +86,7 @@ def consulter(request, id):
         form_note = NoteForm()
 
     images = RecetteImage.objects.filter(recette=recette)
-    print(images)
+
     contexte = {
         'recette': recette,
         'note': note,

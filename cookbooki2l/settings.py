@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/cookbook/afficher'
-LOGIN_URL = '../connexion'
+LOGIN_URL = '/cookbook/connexion'
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
