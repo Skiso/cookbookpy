@@ -18,7 +18,7 @@ def index(request):
 def afficher(request):
     recettes = Recette.objects.all();
     typeObjet = None
-    paginator = Paginator(recettes, 10)
+    paginator = Paginator(recettes, 3)
     page = request.GET.get('page')
     try:
         recettes = paginator.page(page)
@@ -67,19 +67,23 @@ def inscription(request):
 
 @login_required
 def consulter(request, id):
-    recette = get_object_or_404(Recette, pk=id)
+
     commentaire_formu = CommentaireForm(request.POST)
+
     if (request.method == 'POST'):
         note_form = NoteForm(request.POST)
+
         if note_form.is_valid():
-            note_form.recette = Recette.objects.get(recette=id)
+            note_form.recette = Recette.objects.get(id=id)
             note_form.user = request.user
             note_form.save()
+
         if commentaire_formu.is_valid():
-            commentaire_formu.id_recette = Recette.objects.get(id=id)
+            commentaire_formu.recette = Recette.objects.get(id=id)
             commentaire_formu.user = request.user
             commentaire_formu.save()
 
+    recette = get_object_or_404(Recette, id=id)
     note = Note.objects.filter(recette=id).aggregate(Avg('note'))
     noted = 0
     if(request.user.is_authenticated()):
@@ -89,6 +93,7 @@ def consulter(request, id):
         form_note = NoteForm()
 
     commentaire = Commentaire.objects.filter(recette=recette)
+    form_comm = CommentaireForm()
     images = RecetteImage.objects.filter(recette=recette)
 
     contexte = {

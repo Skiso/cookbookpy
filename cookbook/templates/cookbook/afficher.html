@@ -7,15 +7,34 @@
 
     <div id="content">
         <div id="page-title">
-            <h1 class="title">Voici les recettes disponibles, bon ap' !</h1>
+            <h1 class="title">Toutes les recettes ! </h1>
         </div>
         <hr>
         <div class="one-column">
             <ul>
             {% for r in recettes %}
-               <li>{ r.titre }}</li>
+               <li>{{ r.titre }}</li>
             {% endfor %}
             </ul>
         </div>
     </div>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+
+
+            {% if recettes.has_previous %}
+             <li> <a href="?page={{ recettes.previous_page_number }}"> <span aria-hidden="true">Page précédente</span></a></li>
+            {% endif %}
+
+            <span class="current">
+                Page {{ recettes.number }} of {{ recettes.paginator.num_pages }}.
+            </span>
+
+            {% if recettes.has_next %}
+            <li><a href="?page={{ recettes.next_page_number }}"><span aria-hidden="true">Page suivante</span></a></li>
+            {% endif %}
+        </span>
+    </ul>
+
 {% endblock %}
