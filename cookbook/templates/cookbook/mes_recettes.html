@@ -12,8 +12,8 @@
             <tr>
                 <th>Titre</th>
                 <th>Difficulté</th>
-                <th>Note moyenne</th>
                 <th>Temps de préparation</th>
+                <th>Temps de cuisson</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -23,7 +23,15 @@
                 <tr>
 
                     <td><a href="{% url 'consulter' res.id %}">{{ res.titre }}</a></td>
-                    <td>{{ res.difficulte }}</td>
+                    <td>
+                    {% if res.difficulte == "1" %}
+                        Simple
+                    {% elif res.difficulte == "2" %}
+                        Moyen
+                    {% elif res.difficulte == "3" %}
+                        Difficile
+                    {% endif %}
+                    </td>
                     <td>{{ res.temps_prepa }} minutes</td>
                     <td>{{ res.temps_cuisson }} minutes</td>
                     <td><a href="{% url 'modifier' res.id %}">Modifier</a></td>

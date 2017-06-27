@@ -6,7 +6,15 @@
         <span>
             <span class="first">Type : {{ recette.type }}</span> -
             <span>Cout : {{ recette.cout }} €</span> -
-            <span>Difficulté : {{ recette.difficulte }}</span>
+            <span>Difficulté :
+                {% if recette.difficulte == "1" %}
+                    Simple
+                {% elif recette.difficulte == "2" %}
+                    Moyen
+                {% elif recette.difficulte == "3" %}
+                    Difficile
+                {% endif %}
+            </span>
         </span>
     <div class="note">
         <div class="note-moyenne">Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</div>
