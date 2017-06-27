@@ -33,12 +33,18 @@ class Recette(models.Model):
 
 class Commentaire(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commentaire_user")
-    texte = models.TextField(verbose_name="Texte")
+    texte = models.TextField(default=True, verbose_name="Texte")
     date = models.DateField(auto_now_add=True, verbose_name="date du commentaire")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="commentaire_recette")
 
+    def __str__(self):
+        return self.recette
+
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="note_user")
-    note = models.IntegerField(verbose_name="Note de la recette")
+    note = models.IntegerField(default=0, verbose_name="Note de la recette")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="note_recette")
 
+class RecetteImage(models.Model):
+    recette = models.ForeignKey(Recette, verbose_name='recette')
+    file = models.ImageField('Image', upload_to='images')

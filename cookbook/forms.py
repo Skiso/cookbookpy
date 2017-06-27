@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from multiupload.fields import MultiFileField
 
-from cookbook.models import Recette, Note
+from cookbook.models import Recette, Note, RecetteImage
 
 
 class ConnexionForm(forms.Form):
@@ -14,6 +15,14 @@ class RecetteForm(forms.ModelForm):
     class Meta:
         model = Recette
         fields = ['titre', 'type', 'difficulte', 'cout', 'temps_prepa', 'temps_cuisson', 'temps_repos','ingredients','etape']
+
+    files = MultiFileField(min_num=1, max_num=3, max_file_size=1024 * 1024 * 5)
+    def save(self, commit=True):
+         instance = super(RecetteForm, self).save(commit)
+         for each in self.cleaned_data['files']:
+             RecetteImage.objects.create(file=each, recipe=instance)
+
+         return instance
 
 
 class InscriptionForm(UserCreationForm):
@@ -40,3 +49,4 @@ class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = '__all__'
+

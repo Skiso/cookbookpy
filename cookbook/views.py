@@ -5,8 +5,9 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
-from cookbook.forms import ConnexionForm, RecetteForm, InscriptionForm, NoteForm
+from cookbook.forms import ConnexionForm, RecetteForm, InscriptionForm, NoteForm, RecetteImage
 from cookbook.models import Recette, Note, Commentaire
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -38,11 +39,10 @@ def afficher(request):
 def ajouter(request):
     MainForm = RecetteForm()
     if request.method == 'POST':
-        MainForm = RecetteForm(request.POST)
+        MainForm = RecetteForm(request.POST, request.FILES)
         if MainForm.is_valid():
-            recettes = MainForm.save()
-            recettes.user = request.user
-            recettes.save()
+            MainForm.instance.user = request.user
+            MainForm.save()
             return redirect('afficher')
 
     return render(request, "cookbook/nouvelle_recette.html", {
@@ -67,7 +67,7 @@ def inscription(request):
     return render(request, 'cookbook/inscription.html', contexte)
 
 def consulter(request, id):
-
+    recette = get_object_or_404(Recette, pk=id)
     if (request.method == 'POST'):
         note_form = NoteForm(request.POST)
         if note_form.is_valid():
@@ -75,20 +75,23 @@ def consulter(request, id):
             note.id_recette = Recette.objects.get(id=id)
             note.user = request.user
             note.save()
-    recette = Recette.objects.get(pk=id)
-    commentaire = Commentaire.objects.filter(recette = recette)
+
+    commentaire = Commentaire.objects.filter(recette=recette)
     note = Note.objects.filter(recette=id).aggregate(Avg('note'))
     noted = 0
     if(request.user.is_authenticated()):
         noted = Note.objects.filter(recette=id, user=request.user).count()
     form_note = ''
     if noted == 0:
-        form_note = NoteForm();
+        form_note = NoteForm()
 
+    images = RecetteImage.objects.filter(recette=recette)
+    print(images)
     contexte = {
         'recette': recette,
         'note': note,
-        'commentaire':commentaire,
+        'commentaire': commentaire,
         'form_note': form_note,
+        'images': images,
     }
     return render(request, 'cookbook/consulter.html', contexte)
