@@ -1,3 +1,4 @@
-*/_pycache_
+*/__pycache__
 db.sqlite3
 .idea/*
+cookbook/__pycache__/*
