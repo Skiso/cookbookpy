@@ -19,9 +19,9 @@ class Recette(models.Model):
     type = models.CharField(max_length=1,choices=TYPES, verbose_name="type de plat")
     difficulte = models.CharField(blank=True, max_length=1, choices=DIFFICULTE, verbose_name="difficulte")
     cout = models.IntegerField(blank=True, verbose_name="Coût de la recette")
-    temps_prepa = models.DurationField(blank=True, null=True, verbose_name="temps de préparation")
-    temps_cuisson = models.DurationField(blank=True, null=True, verbose_name="temps de cuisson")
-    temps_repos = models.DurationField(blank=True, null=True, verbose_name="temps de repos")
+    temps_prepa = models.IntegerField(blank=True, null=True, verbose_name="temps de préparation")
+    temps_cuisson = models.IntegerField(blank=True, null=True, verbose_name="temps de cuisson")
+    temps_repos = models.IntegerField(blank=True, null=True, verbose_name="temps de repos")
     etape = models.TextField(null=True, verbose_name="Etape de la recette")
     ingredients = models.TextField(null=True, verbose_name="Ingrédients de la recette")
     valide = models.BooleanField(default=False, verbose_name="validé ?")
@@ -37,8 +37,6 @@ class Commentaire(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="date du commentaire")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="commentaire_recette")
 
-    def __str__(self):
-        return self.recette
 
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="note_user")
