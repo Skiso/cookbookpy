@@ -124,16 +124,29 @@ def modifier(request, id):
             recette.user = request.user
             recette.save()
 
-            return redirect('afficher')
+            return redirect('mes_recettes')
 
     return render(request, "cookbook/modifier_recette.html", {
         'recette': recette,
         'form': Recette_formu,
     })
 
+@login_required
+def mes_recettes(request):
+    resultats = None;
+    #Si user co
+    if request.user.is_authenticated():
+        resultats = Recette.objects.filter(user_id=request.user.id)
+    contexte = {
+        'resultats': resultats
+    }
+    return render(request, 'cookbook/mes_recettes.html', contexte)
 
-
-
+@login_required
+def supprimer(request, id):
+    Recette.objects.get(id=id).delete()
+    results = Recette.objects.filter(user_id=request.user.id)
+    return redirect('mes_recettes')
 
 
 
