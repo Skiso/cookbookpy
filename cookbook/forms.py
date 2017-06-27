@@ -20,7 +20,7 @@ class RecetteForm(forms.ModelForm):
     def save(self, commit=True):
          instance = super(RecetteForm, self).save(commit)
          for each in self.cleaned_data['files']:
-             RecetteImage.objects.create(file=each, recipe=instance)
+             RecetteImage.objects.create(file=each, recette=instance)
 
          return instance
 

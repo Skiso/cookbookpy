@@ -1,13 +1,18 @@
 {% extends 'cookbook/_base.html' %}
 {% block contenu %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'app.css' %}">
 
-    <h1>Inscription</h1>
+        <div id="page-title">
+            <h1 class="title">Inscription</h1>
+        </div>
+        <hr>
 
     <form id="registration_form" class="form" method="post" action="{% url 'inscription' %}">
         {% csrf_token %}
 
             {{ formulaire_user.as_p }}
 
-        <input type="submit" value="Inscription"/>
+        <input type="submit" value="S'inscrire" class="btn btn-primary"/>
     </form>
 {% endblock %}
