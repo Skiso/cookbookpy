@@ -1,0 +1,22 @@
+{% extends 'cookbook/_base.html' %}
+{% block titre %}Modifier la recette- {{ recette.titre }}{% endblock %}
+{% block contenu %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'app.css' %}">
+
+    <div id="content">
+        <!-- title -->
+        <div id="page-title">
+            <h1 class="title" >Modifier une recette</span>
+        </div>
+
+        <form method="post" id='newrecette-form'action="{% url 'modifier' recette.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+                {{ form.as_p }}
+
+            <input type="submit" value="Modifier"  class="btn btn-primary" />
+        </form>
+
+    </div>
+{% endblock contenu%}

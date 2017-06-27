@@ -65,7 +65,6 @@ def inscription(request):
     }
     return render(request, 'cookbook/inscription.html', contexte)
 
-@login_required
 def consulter(request, id):
 
     commentaire_formu = CommentaireForm(request.POST)
@@ -105,3 +104,51 @@ def consulter(request, id):
         'images': images,
     }
     return render(request, 'cookbook/consulter.html', contexte)
+
+@login_required
+def modifier(request, id):
+    recette = get_object_or_404(Recette, id=id)
+    Recette_formu = RecetteForm(instance=recette)
+    if request.method == 'POST':
+        form = RecetteForm(request.POST)
+        if form.is_valid():
+            recette.titre = form.cleaned_data['titre']
+            recette.type = form.cleaned_data['type']
+            recette.cout = form.cleaned_data['cout']
+            recette.ingredients = form.cleaned_data['ingredients']
+            recette.etape = form.cleaned_data['etape']
+            recette.difficulte = form.cleaned_data['difficulte']
+            recette.temps_prepa = form.cleaned_data['temps_preparation']
+            recette.temps_cuisson = form.cleaned_data['temps_cuisson']
+            recette.temps_repos = form.cleaned_data['temps_repos']
+            recette.user = request.user
+            recette.save()
+
+            return redirect('afficher')
+
+    return render(request, "cookbook/modifier_recette.html", {
+        'recette': recette,
+        'form': Recette_formu,
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
