@@ -14,8 +14,12 @@
         <form method="post" id='newrecette-form'action="{% url 'modifier' recette.id %}" enctype="multipart/form-data">
         {% csrf_token %}
                 {{ form.as_p }}
+            <h5>Images : {% for image in images %}
+                <img src="/media/{{ image.file }}" width="100" height="100"/>
+            {% endfor %}</h5>
 
             <input type="submit" value="Modifier"  class="btn btn-primary" />
+
         </form>
 
     </div>

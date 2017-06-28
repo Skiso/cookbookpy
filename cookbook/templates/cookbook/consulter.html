@@ -21,7 +21,7 @@
         <div class="form_note">
             {% if user.is_authenticated %}
                 {% if form_note %}
-                     <form action="" method="post">
+                     <form action="{% url 'noter' recette.id %}" method="post">
                     {{ form_note }}
                     {% csrf_token %}
                      <input type="submit" class="btn btn-primary" value="Noter !">
@@ -33,7 +33,6 @@
 
             {% endif %}
         </div>
-    </div>
     </div>
     <div class="recette-right col-sm-7">
         <div class="temps">
@@ -69,7 +68,7 @@
         {% if user.is_authenticated %}
             {% if form_comm %}
                 <h4>Ajouter un commentaire</h4>
-                <form action="" method="post">
+                <form action="{% url 'commenter' recette.id %}" method="post">
                 {{ form_comm }}
                 {% csrf_token %}
                  <input type="submit" class="btn btn-primary" value="Commenter">

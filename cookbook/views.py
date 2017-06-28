@@ -3,10 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from cookbook.forms import RecetteForm, InscriptionForm, NoteForm, RecetteImage, CommentaireForm
 from cookbook.models import Recette, Note, Commentaire
 from django.shortcuts import get_object_or_404
+from datetime import datetime
 
 
 # Create your views here.
@@ -66,22 +68,7 @@ def inscription(request):
     return render(request, 'cookbook/inscription.html', contexte)
 
 def consulter(request, id):
-
     commentaire_formu = CommentaireForm(request.POST)
-
-    if (request.method == 'POST'):
-        note_form = NoteForm(request.POST)
-
-        if note_form.is_valid():
-            note_form.recette = Recette.objects.get(id=id)
-            note_form.user = request.user
-            note_form.save()
-
-        if commentaire_formu.is_valid():
-            commentaire_formu.recette = Recette.objects.get(id=id)
-            commentaire_formu.user = request.user
-            commentaire_formu.save()
-
     recette = get_object_or_404(Recette, id=id)
     note = Note.objects.filter(recette=id).aggregate(Avg('note'))
     noted = 0
@@ -90,11 +77,8 @@ def consulter(request, id):
     form_note = ''
     if noted == 0:
         form_note = NoteForm()
-
     commentaire = Commentaire.objects.filter(recette=recette)
-    form_comm = CommentaireForm()
     images = RecetteImage.objects.filter(recette=recette)
-
     contexte = {
         'recette': recette,
         'note': note,
@@ -108,9 +92,9 @@ def consulter(request, id):
 @login_required
 def modifier(request, id):
     recette = get_object_or_404(Recette, id=id)
-    Recette_formu = RecetteForm(instance=recette)
+    form = RecetteForm(instance=recette)
     if request.method == 'POST':
-        form = RecetteForm(request.POST)
+        form = RecetteForm(request.POST, request.FILES)
         if form.is_valid():
             recette.titre = form.cleaned_data['titre']
             recette.type = form.cleaned_data['type']
@@ -118,7 +102,7 @@ def modifier(request, id):
             recette.ingredients = form.cleaned_data['ingredients']
             recette.etape = form.cleaned_data['etape']
             recette.difficulte = form.cleaned_data['difficulte']
-            recette.temps_prepa = form.cleaned_data['temps_preparation']
+            recette.temps_prepa = form.cleaned_data['temps_prepa']
             recette.temps_cuisson = form.cleaned_data['temps_cuisson']
             recette.temps_repos = form.cleaned_data['temps_repos']
             recette.user = request.user
@@ -128,7 +112,7 @@ def modifier(request, id):
 
     return render(request, "cookbook/modifier_recette.html", {
         'recette': recette,
-        'form': Recette_formu,
+        'form': form,
     })
 
 @login_required
@@ -148,20 +132,29 @@ def supprimer(request, id):
     results = Recette.objects.filter(user_id=request.user.id)
     return redirect('mes_recettes')
 
+def noter(request,id):
+    recette = get_object_or_404(Recette, id=id)
+    if request.method == "POST":
+        post = request.POST
+        note = Note(
+            note=post['note'],
+            user=request.user,
+            recette=recette
+        )
+        note.save()
 
+        return redirect('consulter', id=id)
 
+def commenter(request,id):
+    recette = get_object_or_404(Recette, id=id)
+    if request.method == "POST":
+        post = request.POST
+        com = Commentaire(
+            texte=post['libelle'],
+            user=request.user,
+            recette=recette,
+            date=datetime.now()
+        )
+        com.save()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return redirect('consulter', id=id)

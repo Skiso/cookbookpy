@@ -46,6 +46,7 @@ class InscriptionForm(UserCreationForm):
             return user
 
 class NoteForm(forms.ModelForm):
+    note = forms.IntegerField(min_value=0, max_value=10)
     class Meta:
         model = Note
         fields = ['note']

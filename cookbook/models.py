@@ -24,9 +24,7 @@ class Recette(models.Model):
     temps_repos = models.IntegerField(blank=True, null=True, verbose_name="temps de repos")
     etape = models.TextField(null=True, verbose_name="Etape de la recette")
     ingredients = models.TextField(null=True, verbose_name="Ingrédients de la recette")
-    valide = models.BooleanField(default=False, verbose_name="validé ?")
     user = models.ForeignKey(User, default=False, on_delete=models.CASCADE, related_name="id_user")
-
 
     def __str__(self):
         return self.titre
@@ -37,10 +35,9 @@ class Commentaire(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="date du commentaire")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="commentaire_recette")
 
-
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="note_user")
-    note = models.IntegerField(verbose_name="Note de la recette")
+    note = models.IntegerField(null=True, verbose_name="Note de la recette")
     recette = models.ForeignKey(Recette, on_delete=models.CASCADE, related_name="note_recette")
 
 class RecetteImage(models.Model):
