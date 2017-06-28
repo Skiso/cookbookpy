@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
   <meta charset="UTF-8">
@@ -27,7 +27,16 @@
         {% else %}
         <li><a href="/cookbook/connexion">Se connecter</a></li>
         <li><a href="/cookbook/inscription">S'inscrire</a></li>
+
         {% endif %}
+        <form method="GET" action="{% url 'rechercher' %}">
+          <div class="input-group">
+           <input type="text" class="form-control" name="chercher_req" placeholder="Rechercher un plat, ingrédients ...">
+           <span class="input-group-btn">
+               <input type="submit" value="Rechercher" class="btn btn-primary" />
+           </span>
+          </div><!-- /input-group -->
+        </form>
       </ul>
     </div>
   </nav>
