@@ -16,3 +16,7 @@
     align-items:center;
     text-align: center;
 }
+
+#search-navbar{
+    min-width: 20%;
+}

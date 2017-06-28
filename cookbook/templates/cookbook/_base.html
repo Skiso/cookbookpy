@@ -15,10 +15,10 @@
 
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <li class="navbar-brand">CookBook Master I2L</li>
-      </div>
+      <!--<div class="navbar-header">-->
+      <!--</div>-->
       <ul class="nav navbar-nav">
+        <li class="navbar-brand">CookBook Master I2L</li>
         <li><a href="/cookbook/afficher">Toutes les recettes</a></li>
         <li><a href="/cookbook/mes_recettes">Mes recettes</a></li>
         <li><a href="/cookbook/ajouter">Ajouter une recette</a></li>
@@ -30,7 +30,7 @@
 
         {% endif %}
         <form method="GET" action="{% url 'rechercher' %}">
-          <div class="input-group">
+          <div class="input-group" id='search-navbar'>
            <input type="text" class="form-control" name="chercher_req" placeholder="Rechercher un plat, ingrédients ...">
            <span class="input-group-btn">
                <input type="submit" value="Rechercher" class="btn btn-primary" />
