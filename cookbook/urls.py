@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from cookbook import views
-from cookbook.views import afficher, ajouter, inscription, consulter, modifier, supprimer, mes_recettes, noter, commenter
+from cookbook.views import afficher, ajouter, inscription, consulter, modifier, supprimer, mes_recettes, noter,\
+    commenter, rechercher
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^ajouter/$', ajouter, name='ajouter'),
     url(r'^mes_recettes/$', mes_recettes, name='mes_recettes'),
     url(r'^supprimer/(?P<id>\d+)/$', supprimer, name='supprimer'),
+    url(r'^rechercher/$', rechercher, name='rechercher'),
     url(r'^consulter/(?P<id>\d+)/', consulter, name="consulter"),
     url(r'^noter/(?P<id>\d+)/', noter, name="noter"),
     url(r'^commenter/(?P<id>\d+)/', commenter, name="commenter"),

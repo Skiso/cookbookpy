@@ -132,6 +132,7 @@ def supprimer(request, id):
     results = Recette.objects.filter(user_id=request.user.id)
     return redirect('mes_recettes')
 
+@login_required
 def noter(request,id):
     recette = get_object_or_404(Recette, id=id)
     if request.method == "POST":
@@ -145,6 +146,7 @@ def noter(request,id):
 
         return redirect('consulter', id=id)
 
+@login_required
 def commenter(request,id):
     recette = get_object_or_404(Recette, id=id)
     if request.method == "POST":
@@ -158,3 +160,36 @@ def commenter(request,id):
         com.save()
 
         return redirect('consulter', id=id)
+
+def rechercher(request):
+    req = request.GET.get('chercher_req')
+    critere = ''
+    tri = ''
+    if request.GET.get('critere') and request.GET.get('tri'):
+        critere = request.GET.get('critere')
+        tri = request.GET.get('tri')
+        if tri == 'desc':
+            resultats = Recette.objects.filter(titre__contains=req).order_by('-' + critere).select_related()
+        elif tri == 'asc':
+            resultats = Recette.objects.filter(titre__contains=req).order_by(critere).select_related()
+    else:
+        resultats = Recette.objects.filter(titre__contains=req).select_related()
+
+    paginator = Paginator(resultats, 3)
+    page = request.GET.get('page')
+    try:
+        resultats = paginator.page(page)
+    except PageNotAnInteger:
+        resultats = paginator.page(1)
+    except EmptyPage:
+        resultats = paginator.page(paginator.num_pages)
+
+    contexte = {
+        'page': page,
+        'tri': tri,
+        'critere': critere,
+        'req': req,
+        'resultats': resultats
+    }
+
+    return render(request, 'cookbook/resultat_recherche.html', contexte)
