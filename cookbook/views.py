@@ -77,8 +77,21 @@ def consulter(request, id):
     form_note = ''
     if noted == 0:
         form_note = NoteForm()
+
     commentaire = Commentaire.objects.filter(recette=recette)
     images = RecetteImage.objects.filter(recette=recette)
+
+    paginator = Paginator(commentaire, 1)
+    page = request.GET.get('page')
+    try:
+        commentaire = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        commentaire = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        commentaire = paginator.page(paginator.num_pages)
+
     contexte = {
         'recette': recette,
         'note': note,
@@ -87,6 +100,7 @@ def consulter(request, id):
         'form_comm': commentaire_formu,
         'images': images,
     }
+
     return render(request, 'cookbook/consulter.html', contexte)
 
 @login_required
@@ -161,6 +175,7 @@ def commenter(request,id):
 
         return redirect('consulter', id=id)
 
+@login_required
 def rechercher(request):
     req = request.GET.get('chercher_req')
     critere = ''
