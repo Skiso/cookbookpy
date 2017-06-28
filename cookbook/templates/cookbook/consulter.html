@@ -2,8 +2,8 @@
 {% block titre %}Recette -{{ recette.titre }} {% endblock %}
 {% block contenu %}
 
-        <h1> {{ recette.titre }}</h1>
-        <span>
+<h1> {{ recette.titre }}</h1>
+<span>
             <span class="first">Type : {{ recette.type }}</span> -
             <span>Cout : {{ recette.cout }} €</span> -
             <span>Difficulté :
@@ -16,73 +16,87 @@
                 {% endif %}
             </span>
         </span>
-    <div class="note">
-        <div class="note-moyenne">Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</div>
-        <div class="form_note">
-            {% if user.is_authenticated %}
-                {% if form_note %}
-                     <form action="{% url 'noter' recette.id %}" method="post">
-                    {{ form_note }}
-                    {% csrf_token %}
-                     <input type="submit" class="btn btn-primary" value="Noter !">
-                    </form>
-                {% else %}
-                    <span>Vous avez déjà voté !</span>
-                {% endif %}
-            {% else %}
-
-            {% endif %}
-        </div>
-    </div>
-    <div class="recette-right col-sm-7">
-        <div class="temps">
-            <ul>
-                <li><span>Temps de cuisson :</span> {{ recette.temps_cuisson }} minutes</li>
-                <li><span>Temps de preparation :</span> {{ recette.temps_prepa }} minutes</li>
-                <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>
-            </ul>
-        </div>
-        <div class="etapes">
-             Etapes :
-            <p>{{recette.etape }}
-
-        </div>
-        <div class="ingredients">
-           Ingrédients :<p>{{ recette.ingredients}}</p>
-
-        </div>
-    </div>
-
-    <div class="form_com col-sm-12">
-        <h3> Commentaires :</h3>
-        <div class="commentaire">
-            <ul>
-                {% for com in commentaire %}
-                    <li>
-                        <span>{{ com.user }} le {{ com.date }}</span>
-                        <div>{{ com.texte }}</div>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+<div class="note">
+    <div class="note-moyenne">Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</div>
+    <div class="form_note">
         {% if user.is_authenticated %}
-            {% if form_comm %}
-                <h4>Ajouter un commentaire</h4>
-                <form action="{% url 'commenter' recette.id %}" method="post">
-                {{ form_comm }}
+            {% if form_note %}
+            <form action="{% url 'noter' recette.id %}" method="post">
+                {{ form_note }}
                 {% csrf_token %}
-                 <input type="submit" class="btn btn-primary" value="Commenter">
-                </form>
+                <input type="submit" class="btn btn-primary" value="Noter !">
+            </form>
             {% else %}
-                Vous avez déjà commenté !
+            <span>Vous avez déjà voté !</span>
             {% endif %}
-        {% else %}
         {% endif %}
     </div>
 </div>
+<div class="recette-right col-sm-7">
+    <div class="temps">
+        <ul>
+            <li><span>Temps de cuisson :</span> {{ recette.temps_cuisson }} minutes</li>
+            <li><span>Temps de preparation :</span> {{ recette.temps_prepa }} minutes</li>
+            <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>
+        </ul>
+    </div>
+    <div class="etapes">
+        Etapes :
+        <p>{{recette.etape }}
 
-{% for image in images %}
-          <img src="/media/{{ image.file }}" width="100" height="100"/>
-        {% endfor %}
+    </div>
+    <div class="ingredients">
+        Ingrédients :<p>{{ recette.ingredients}}</p>
 
-{% endblock %}
+    </div>
+</div>
+
+<div class="form_com col-sm-12">
+    <h3> Commentaires :</h3>
+    <div class="commentaire">
+        <ul>
+            {% for com in commentaire %}
+            <li>
+                <span>{{ com.user }} le {{ com.date }}</span>
+                <div>{{ com.texte }}</div>
+            </li>
+            <nav aria-label="Page navigation">
+                 <ul class="pagination">
+
+                {% if commentaire.has_previous %}
+                    <li><a href="?page={{ commentaire.previous_page_number }}"><span aria-hidden="true">Page précédente</span></a></li>
+                {% endif %}
+
+                <span class="current">
+                        Page {{ commentaire.number }} de {{ commentaire.paginator.num_pages }}.
+                </span>
+
+                {% if commentaire.has_next %}
+                     <li><a href="?page={{ commentaire.next_page_number }}"><span aria-hidden="true">Page suivante</span></a></li>
+                {% endif %}
+
+                </ul>
+                {% endfor %}
+        </ul>
+    </div>
+    {% if user.is_authenticated %}
+        {% if form_comm %}
+        <h4>Ajouter un commentaire</h4>
+        <form action="{% url 'commenter' recette.id %}" method="post">
+            {{ form_comm }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Commenter">
+        </form>
+        {% else %}
+            Vous avez déjà commenté !
+        {% endif %}
+    {% endif %}
+</div>
+
+
+    {% for image in images %}
+    <img src="/media/{{ image.file }}" width="100" height="100"/>
+
+    {% endfor %}
+
+    {% endblock %}
