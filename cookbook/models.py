@@ -18,7 +18,7 @@ class Recette(models.Model):
     titre = models.CharField(max_length=200, verbose_name="titre")
     type = models.CharField(max_length=1,choices=TYPES, verbose_name="type de plat")
     difficulte = models.CharField(blank=True, max_length=1, choices=DIFFICULTE, verbose_name="difficulte")
-    cout = models.IntegerField(blank=True, verbose_name="Coût de la recette")
+    cout = models.IntegerField(blank=True, null=True, verbose_name="Coût de la recette")
     temps_prepa = models.IntegerField(blank=True, null=True, verbose_name="temps de préparation")
     temps_cuisson = models.IntegerField(blank=True, null=True, verbose_name="temps de cuisson")
     temps_repos = models.IntegerField(blank=True, null=True, verbose_name="temps de repos")
@@ -42,4 +42,4 @@ class Note(models.Model):
 
 class RecetteImage(models.Model):
     recette = models.ForeignKey(Recette, verbose_name='recette')
-    file = models.ImageField('Image', upload_to='images')
+    file = models.ImageField('Image', null=True, upload_to='images')
