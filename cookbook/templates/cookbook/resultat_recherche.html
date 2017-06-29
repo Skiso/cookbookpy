@@ -1,7 +1,7 @@
 {% extends 'cookbook/_base.html' %}
 {% block contenu %}
     {% if resultats %}
-    <h1>Vous avez trouvé {{ resultats.count }} recette(s).</h1>
+    <h1>Voici le résultat de votre recherche : </h1>
 
 <div class="search-filter">
         <form method="GET" action="{% url 'rechercher' %}">

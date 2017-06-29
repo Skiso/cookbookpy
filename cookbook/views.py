@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Avg
-from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from cookbook.forms import RecetteForm, InscriptionForm, NoteForm, RecetteImage, CommentaireForm
 from cookbook.models import Recette, Note, Commentaire
@@ -19,7 +18,6 @@ def index(request):
 
 def afficher(request):
     recettes = Recette.objects.all();
-    typeObjet = None
     paginator = Paginator(recettes, 3)
     page = request.GET.get('page')
     try:
@@ -31,7 +29,6 @@ def afficher(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         recettes = paginator.page(paginator.num_pages)
     contexte = {
-        'typeObjet': typeObjet,
         'recettes': recettes,
     }
     return render(request, 'cookbook/afficher.html', contexte)
