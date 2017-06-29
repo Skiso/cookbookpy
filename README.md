@@ -19,5 +19,7 @@ FK : user, recette
 
 Jeu de données :
 dans /cookbook/fixtures/data.json
+>> cmd python manage.py dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 4 > cookbook/fixtures/data.json
+Pour régler les problèmes intégrité
 >> cmd python manage.py loaddata
 
