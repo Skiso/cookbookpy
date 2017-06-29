@@ -45,8 +45,18 @@
                         Difficile
                     {% endif %}
                     </td>
-                    <td>{{ res.temps_prepa }} minutes</td>
-                    <td>{{ res.temps_cuisson }} minutes</td>
+                    <td>    {% if res.temps_prepa %}
+                                {{ res.temps_prepa }} minutes
+                            {% elif res.temps_prepa == null %}
+                                ----
+                            {% endif %}
+                    </td>
+                    <td>    {% if res.temps_cuisson %}
+                                {{ res.temps_cuisson }} minutes
+                            {% elif res.temps_cuisson == null %}
+                                ----
+                            {% endif %}
+                    </td>
 
                 </tr>
             {% endfor %}

@@ -3,57 +3,63 @@
 {% block contenu %}
 
 <h1> {{ recette.titre }}</h1>
-<span>
-            <span class="first">Type : {{ recette.type }}</span> -
-            <span>Cout : {{ recette.cout }} €</span> -
-            <span>Difficulté :
-                {% if recette.difficulte == "1" %}
-                    Simple
-                {% elif recette.difficulte == "2" %}
-                    Moyen
-                {% elif recette.difficulte == "3" %}
-                    Difficile
-                {% endif %}
-            </span>
-        </span>
-<div class="note">
-    <div class="note-moyenne">Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</div>
-    <div class="form_note">
-        {% if user.is_authenticated %}
-            {% if form_note %}
-            <form action="{% url 'noter' recette.id %}" method="post">
-                {{ form_note }}
-                {% csrf_token %}
-                <input type="submit" class="btn btn-primary" value="Noter !">
-            </form>
-            {% else %}
-            <span>Vous avez déjà voté !</span>
-            {% endif %}
+
+    <p>Type :
+        {% if recette.type == "D" %}
+            Dessert
+        {% elif recette.type == "E" %}
+            Entrée
+        {% elif recette.type == "P" %}
+            Plat
         {% endif %}
-    </div>
-</div>
-<div class="recette-right col-sm-7">
-    <div class="temps">
+    </p>
+    <p>Cout : {{ recette.cout }} €
+    <p>Difficulté :
+        {% if recette.difficulte == "1" %}
+            Simple
+        {% elif recette.difficulte == "2" %}
+            Moyen
+        {% elif recette.difficulte == "3" %}
+            Difficile
+        {% endif %}
+    </p>
+
+    <p>Note moyenne : {{ note.note__avg|floatformat:"2" }} / 10</p>
+
+    {% if user.is_authenticated %}
+        {% if form_note %}
+        <form action="{% url 'noter' recette.id %}" method="post">
+            {{ form_note }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Noter !">
+        </form>
+        {% else %}
+        <span>Vous avez déjà voté !</span>
+        {% endif %}
+    {% endif %}
+
+    <p>
         <ul>
-            <li><span>Temps de cuisson :</span> {{ recette.temps_cuisson }} minutes</li>
-            <li><span>Temps de preparation :</span> {{ recette.temps_prepa }} minutes</li>
-            <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>
+             {% if recette.temps_cuisson %}<li><span>Temps de cuisson :</span>  {{ recette.temps_cuisson }} minutes</li>{% endif %}
+             {% if recette.temps_prepa %}<li><span>Temps de preparation :</span> {{ recette.temps_prepa }} minutes</li>{% endif %}
+             {% if recette.temps_repos %} <li><span>Temps de repos :</span> {{ recette.temps_repos }} minutes</li>{% endif %}
         </ul>
-    </div>
-    <div class="etapes">
+    </p>
+    <p>
         Etapes :
         <p>{{recette.etape }}
 
-    </div>
-    <div class="ingredients">
-        Ingrédients :<p>{{ recette.ingredients}}</p>
+    </p>
 
-    </div>
-</div>
+      <p>  Ingrédients :<p>{{ recette.ingredients}}</p></p>
 
-<div class="form_com col-sm-12">
+
+
+
+
+
     <h3> Commentaires :</h3>
-    <div class="commentaire">
+
         <ul>
             {% for com in commentaire %}
             <li>
@@ -78,7 +84,7 @@
                 </ul>
                 {% endfor %}
         </ul>
-    </div>
+
     {% if user.is_authenticated %}
         {% if form_comm %}
         <h4>Ajouter un commentaire</h4>
@@ -93,7 +99,7 @@
     {% endif %}
 </div>
 
-
+    <h3>Images de la recette :</h3>
     {% for image in images %}
     <img src="/media/{{ image.file }}" width="100" height="100"/>
 
