@@ -23,3 +23,6 @@ dans /cookbook/fixtures/data.json
 Pour régler les problèmes intégrité
 >> cmd python manage.py loaddata
 
+ADMIN :
+admin
+mdp : adminadmin
