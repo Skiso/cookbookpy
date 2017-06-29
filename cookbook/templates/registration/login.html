@@ -9,7 +9,7 @@
     <h5 class="success_message">Vous venez de créer votre compte. Vous pouvez dès à present vous connecter.</h5>
     {% endif %}
     <form method="post">
-
+        {% csrf_token %}
         {% if form.errors %}
         <p class="errorlist">Votre identifiant et votre mot de passe de matche pas. Merci de vérifier vos informations.</p>
         {% endif %} {% csrf_token %} {{ form.as_p }}

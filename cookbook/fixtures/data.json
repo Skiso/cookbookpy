@@ -1,1 +1,501 @@
-[{"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "auth", "model": "user"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "cookbook", "model": "recette"}}, {"model": "contenttypes.contenttype", "pk": 8, "fields": {"app_label": "cookbook", "model": "commentaire"}}, {"model": "contenttypes.contenttype", "pk": 9, "fields": {"app_label": "cookbook", "model": "note"}}, {"model": "contenttypes.contenttype", "pk": 10, "fields": {"app_label": "cookbook", "model": "recetteimage"}}, {"model": "sessions.session", "pk": "ot0pjg149yfvcovj67colwgovvkp3gwl", "fields": {"session_data": "NzIxMzgzZjAzNmJlZmFkZDBkZDIxM2NjMTIwOGM3ODgyYjU3ZjU4OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIzYjJlZjI5YWJiYjcyMTMzZGEzNDA3ZTdiNzQyZWRiMDM3YmQ0Nzk3In0=", "expire_date": "2017-07-13T09:26:54.184Z"}}, {"model": "cookbook.recetteimage", "pk": 9, "fields": {"recette": 10, "file": "images/2f9c07a0-87de-4f48-97a6-e25343f749fa_normal.jpg"}}, {"model": "cookbook.recetteimage", "pk": 10, "fields": {"recette": 11, "file": "images/tortillas-buffalo-ranch-nice-458x304.jpg"}}, {"model": "cookbook.recetteimage", "pk": 11, "fields": {"recette": 12, "file": "images/8cffdbbf-2f10-4448-9101-8d75d0bdd2c5_normal.jpg"}}, {"model": "cookbook.recetteimage", "pk": 12, "fields": {"recette": 13, "file": "images/6ec77bf2-0278-41be-97d3-3689ea57ecaa_normal.jpg"}}, {"model": "cookbook.recetteimage", "pk": 13, "fields": {"recette": 14, "file": "images/7298ced0-03f1-4131-aa4d-13050ed1d4a4_normal.jpg"}}, {"model": "cookbook.recetteimage", "pk": 14, "fields": {"recette": 15, "file": "images/index.jpeg"}}, {"model": "cookbook.recetteimage", "pk": 15, "fields": {"recette": 16, "file": "images/f1a92bc2-91d2-4e84-a2c3-6a88e0dc09f8_normal.jpg"}}, {"model": "cookbook.recetteimage", "pk": 16, "fields": {"recette": 17, "file": "images/c3241a73-d7b6-427f-948d-f2d46a8e2d1b_normal.jpg"}}, {"model": "auth.permission", "pk": 1, "fields": {"name": "Can add log entry", "content_type": 1, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change log entry", "content_type": 1, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete log entry", "content_type": 1, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can add permission", "content_type": 2, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can change permission", "content_type": 2, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can delete permission", "content_type": 2, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can add group", "content_type": 3, "codename": "add_group"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can change group", "content_type": 3, "codename": "change_group"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can delete group", "content_type": 3, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can add user", "content_type": 4, "codename": "add_user"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can change user", "content_type": 4, "codename": "change_user"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can delete user", "content_type": 4, "codename": "delete_user"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add content type", "content_type": 5, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change content type", "content_type": 5, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete content type", "content_type": 5, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can add session", "content_type": 6, "codename": "add_session"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can change session", "content_type": 6, "codename": "change_session"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can delete session", "content_type": 6, "codename": "delete_session"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can add recette", "content_type": 7, "codename": "add_recette"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can change recette", "content_type": 7, "codename": "change_recette"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can delete recette", "content_type": 7, "codename": "delete_recette"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can add commentaire", "content_type": 8, "codename": "add_commentaire"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can change commentaire", "content_type": 8, "codename": "change_commentaire"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can delete commentaire", "content_type": 8, "codename": "delete_commentaire"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add note", "content_type": 9, "codename": "add_note"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change note", "content_type": 9, "codename": "change_note"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete note", "content_type": 9, "codename": "delete_note"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can add recette image", "content_type": 10, "codename": "add_recetteimage"}}, {"model": "auth.permission", "pk": 29, "fields": {"name": "Can change recette image", "content_type": 10, "codename": "change_recetteimage"}}, {"model": "auth.permission", "pk": 30, "fields": {"name": "Can delete recette image", "content_type": 10, "codename": "delete_recetteimage"}}, {"model": "auth.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$36000$bWPf9CAWojqT$a2XG1PyEHUmsNKUGmkdUSTWkj5OUtLbLxvrxfOT78hc=", "last_login": "2017-06-29T09:26:54.026Z", "is_superuser": true, "username": "admin", "first_name": "", "last_name": "", "email": "", "is_staff": true, "is_active": true, "date_joined": "2017-06-27T13:15:29.373Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$36000$roNPo4axOkD2$yhOnRuoIiMj/HzADVe4H0sIMVYa73DQe3jcBm3F3MzI=", "last_login": "2017-06-29T09:15:02.546Z", "is_superuser": false, "username": "julien", "first_name": "s", "last_name": "j", "email": "toto@fr.fr", "is_staff": false, "is_active": true, "date_joined": "2017-06-27T13:16:08.417Z", "groups": [], "user_permissions": []}}, {"model": "auth.user", "pk": 3, "fields": {"password": "pbkdf2_sha256$36000$CV2OnW3Ddpxn$36osEFxlVFNdY750nOQ0JS/JFCWrlUbKvRLJa9INpTc=", "last_login": "2017-06-29T09:25:35.415Z", "is_superuser": false, "username": "clarisse", "first_name": "col", "last_name": "cl", "email": "cl@fr.fr", "is_staff": false, "is_active": true, "date_joined": "2017-06-27T18:21:20.029Z", "groups": [], "user_permissions": []}}, {"model": "cookbook.recette", "pk": 10, "fields": {"titre": "Entr\u00e9e Fraicheur", "type": "E", "difficulte": "1", "cout": 10, "temps_prepa": 5, "temps_cuisson": null, "temps_repos": null, "etape": "Coupez les tomates en deux et videz-les. D\u00e9coupez chaque tranche de jambon en quatre.\r\nDisposez un morceau de jambon au fond de la tomate.\r\nM\u00e9langez la cr\u00e8me fra\u00eeche et le ch\u00e8vre dans un bol.\r\nMettez-en environ une cuiller \u00e0 soupe dans chaque moiti\u00e9 de tomate.\r\nAjoutez un deuxi\u00e8me morceau de jambon de Parme au-dessus de la cr\u00e8me de ch\u00e8vre. Puis d\u00e9posez une feuille de basilic.\r\nAssaisonnez, puis d\u00e9gustez !", "ingredients": "- 3 tomates\r\n- 200 g de ch\u00e8vre frais\r\n- 4 cuillers \u00e0 soupe de cr\u00e8me fra\u00eeche \u00e9paisse\r\n- 3 tranches de jambon de Parme\r\n- 6 feuilles de basilic frais", "user": 2}}, {"model": "cookbook.recette", "pk": 11, "fields": {"titre": "Entr\u00e9e Mexicaine", "type": "E", "difficulte": "2", "cout": 10, "temps_prepa": 15, "temps_cuisson": null, "temps_repos": 240, "etape": "M\u00e9langer dans un mixeur l'avocat, le fromage, la cr\u00e8me fra\u00eeche et le citron pour obtenir une p\u00e2te homog\u00e8ne.\r\nFaire cuire le bacon et le couper finement.\r\nTamiser le jus de la sauce salsa.\r\nDisposer sur une grande assiette ronde en couche successive la pr\u00e9paration du mixeur, puis tous les ingr\u00e9dients de la pr\u00e9paration en finissant par le fromage r\u00e2p\u00e9.\r\nR\u00e9frig\u00e9rer minimum 4 h.", "ingredients": "- 1 avocat m\u00fbr\r\n- 1 paquet de fromage frais (type St Moret)\r\n- 125 ml de cr\u00e8me fra\u00eeche \u00e9paisse\r\n- 1 cuill\u00e8re \u00e0 caf\u00e9 de jus de citron vert\r\n- 350 ml de sauce salsa ( moyennement \u00e9pic\u00e9e)\r\n- 1 tomate\r\n- 20 olives vertes farcies tranch\u00e9es\r\n- 20 olives noires tranch\u00e9es\r\n- 5 ou 6 tranches de bacon\r\n- 4 \u00e9chalotes\r\n- 1 bol de fromage r\u00e2p\u00e9 (Cheddar)", "user": 2}}, {"model": "cookbook.recette", "pk": 12, "fields": {"titre": "Entr\u00e9e chaude \u00e0 la bisque de homard", "type": "E", "difficulte": "2", "cout": 10, "temps_prepa": 10, "temps_cuisson": 30, "temps_repos": null, "etape": "Mixer le tout, mettre dans un moule \u00e0 couronne bien beurr\u00e9.\r\nFaire cuire au bain marie environ 30 minutes \u00e0 200\u00b0C (thermostat 7).\r\nServir chaud accompagn\u00e9 d'une sauce \u00e0 la cr\u00e8me avec du concentr\u00e9 de tomate et des petites crevettes.", "ingredients": "6 personnes :\r\n- 450 g de bisque de homard\r\n- 6 oeufs\r\n- 1 verre de cr\u00e8me fra\u00eeche\r\n- 3 cuill\u00e8res \u00e0 soupe de maizena\r\n- 1 bo\u00eete de concentr\u00e9 de tomate", "user": 2}}, {"model": "cookbook.recette", "pk": 13, "fields": {"titre": "Pommes sur \u00eele flottante", "type": "D", "difficulte": "1", "cout": 10, "temps_prepa": 30, "temps_cuisson": 10, "temps_repos": null, "etape": "Pr\u00e9parez un sirop avec l'eau, 250 g de sucre et une grosse cuiller \u00e0 soupe de cannelle. Faites bouillir.\r\nPendant ce temps, pelez les pommes, enlevez les p\u00e9pins avec une petite cuiller sans percer le fond.\r\nLorsque le sirop est pr\u00eat, plongez les pommes dedans 10 ou 15 min selon leur grosseur. Elles doivent \u00eatre moelleuses.\r\nEgouttez-les et r\u00e9servez.\r\nPr\u00e9parez la cr\u00e8me. Dans des saladiers, s\u00e9parez le blanc des jaunes.\r\nFaites bouillir le lait, avec les 100 g de sucre. Battez les blancs en neige.\r\nAvec une grosse cuiller, plongez des boules de blancs en neige dans le lait pendant 3 min. Sortez-les sur un papier absorbant.\r\nEnsuite, d\u00e9layez les 6 jaunes d'oeuf avec le lait refroidi. Mettez sur le feu et faites chauffer sans laisser bouillir. Tournez sans arr\u00eat.\r\nLorsque la cr\u00e8me \u00e0 \u00e9paissie, mettez la dans un plat, d\u00e9posez les pommes sur la cr\u00e8me puis remplissez et nappez celles-ci avec la cr\u00e8me.\r\nPour finir, posez sur chacune un petit chapeau de blanc \u00e0 la neige.\r\nJe d\u00e9core avec une cerise confite ou des petits bouts d'ang\u00e9lique pour faire les queues et des petites feuilles de menthe.", "ingredients": "6 personnes : \r\n- 6 pommes\r\n- 350 g de sucre\r\n- 75 cl d'eau\r\n- 75 cl de lait\r\n- 6 oeufs\r\n- 1 cuiller \u00e0 soupe de cannelle", "user": 2}}, {"model": "cookbook.recette", "pk": 14, "fields": {"titre": "Donuts faciles (rosquitas au Chili)", "type": "D", "difficulte": "1", "cout": 10, "temps_prepa": 10, "temps_cuisson": 3, "temps_repos": null, "etape": "M\u00e9langer la farine et la levure, ajouter le beurre puis les oeufs, les \u00e9corces de citron et enfin le lait concentr\u00e9. La p\u00e2te ne doit pas coller aux mains.\r\nSi besoin, rajouter de la farine jusqu'\u00e0 ce que \u00e7a ne colle plus.\r\nFormer avec les mains des boudins d'environs 10 cm et les fermer en anneaux (on peut aussi faire plus simplement des galettes un peu \u00e9paisses.)\r\nFaire au fur et \u00e0 mesure. Je les frits dans un wok avec 1 l d'huile.", "ingredients": "10 personnes : \r\n- 1 kg de farine + 125 g\r\n- 2 cuill\u00e8res \u00e0 caf\u00e9 de levure chimique\r\n- 100 g de beurre\r\n- 2 oeufs\r\n- 2 cuill\u00e8res \u00e0 caf\u00e9 de zeste de citron (facultatif, ou autre essence)\r\n- 400 g de lait concentr\u00e9 sucr\u00e9 (1 petite bo\u00eete)\r\n- huile pour frire", "user": 2}}, {"model": "cookbook.recette", "pk": 15, "fields": {"titre": "Tagliatelles aux c\u00e8pes", "type": "P", "difficulte": "1", "cout": 15, "temps_prepa": 10, "temps_cuisson": 15, "temps_repos": null, "etape": "Faites cuire les p\u00e2tes dans une casserole d'eau bouillante sal\u00e9e le temps indiqu\u00e9 sur l'emballage.\r\n    Pendant ce temps faites revenir la gousse d'ail hach\u00e9e dans une po\u00eale avec une noisette de beurre.\r\n    Ajoutez les c\u00e8pes et laisser cuire sur feu doux environ 7 minutes.\r\n    \u00c9gouttez les p\u00e2tes. Reversez les p\u00e2tes dans la casserole.\r\n    Sur feu doux ajoutez les c\u00e8pes, le parmesan r\u00e2p\u00e9, la cr\u00e8me et saupoudrez de persil frais. D\u00e9gustez bien chaud.", "ingredients": "2 personnes : \r\n  200 g de tagliatelles, 250 g de c\u00e8pes surgel\u00e9es, 100 g de parmesan, 10 cl de cr\u00e8me liquide, 1 petite gousse d'ail, persil.", "user": 2}}, {"model": "cookbook.recette", "pk": 16, "fields": {"titre": "Risotto au chorizo et dinde", "type": "P", "difficulte": "2", "cout": 6, "temps_prepa": 10, "temps_cuisson": 30, "temps_repos": null, "etape": "Faire revenir les blancs de poulet dans un peu d'huile.\r\n\r\nDans la m\u00eame po\u00eale, faire revenir l'oignon dans un peu d'huile, ajouter le riz et attendre qu'il devienne translucide.\r\nAjouter le safran et le chorizo.\r\nMouiller le tout avec un peu de bouillon et laisser cuire \u00e0 feu doux, \u00e0 couvert, en rajoutant le bouillon petit \u00e0 petit et en remuant de temps en temps.\r\nUne fois le riz cuit, remettre les blancs de poulet, d\u00e9couvrir et laisser cuire encore quelques minutes.", "ingredients": "4 personnes :\r\n- 2 verres \u00e0 moutarde de riz\r\n- 1/2 chorizo en rondelles\r\n- 500 g de blancs de poulet ou de dinde en \u00e9minc\u00e9\r\n- 1 gros oignon hach\u00e9\r\n- 1 dose de safran\r\n- 500 ml d'eau + un cube de volaille et un cube \u00e9pic\u00e9", "user": 3}}, {"model": "cookbook.recette", "pk": 17, "fields": {"titre": "Pa\u00eblla fruits de mer", "type": "P", "difficulte": "2", "cout": 20, "temps_prepa": 35, "temps_cuisson": 35, "temps_repos": null, "etape": "D\u00e9couper le poulet en morceaux, nettoyer les moules, \u00e9mincer le chorizo et les poivrons, peler et concasser les tomates, hacher les oignons et l'ail.\r\nMettre l'huile dans le plat et faire dorer les morceaux de poulet. Ajouter les calamars, les oignons tout en remuant puis mettre les tomates, les poivrons, l'ail, le safran, le sel et le poivre. Laisser cuire 5 minutes en remuant avant d'incorporer le riz, le chorizo et le bouillon.\r\nY plonger les crevettes et les moules, porter \u00e0 \u00e9bullition puis laisser cuire environ 30-35 minutes.", "ingredients": "8 personnes :\r\n- 500 g de riz\r\n- 1 kg de filet de poulet\r\n- 500 g de calamars\r\n- 1 l de moules\r\n- 15 grosses crevettes\r\n- 1 chorizo\r\n- 2 poivrons\r\n- 1 kg de tomates\r\n- 2 oignons\r\n- 3 gousses d'l'ail\r\n- 3 doses de safran\r\n- 1 l de bouillon de volaille\r\n- 5 cuill\u00e8res \u00e0 soupe d'huile d'olive\r\n- sel et poivre", "user": 3}}, {"model": "cookbook.commentaire", "pk": 8, "fields": {"user": 3, "texte": "Bonne id\u00e9e, peut-on le faire avec des poires ?", "date": "2017-06-29", "recette": 13}}, {"model": "cookbook.commentaire", "pk": 9, "fields": {"user": 3, "texte": "J'ai pas aim\u00e9 :(", "date": "2017-06-29", "recette": 11}}, {"model": "cookbook.commentaire", "pk": 10, "fields": {"user": 3, "texte": "Trop bien !", "date": "2017-06-29", "recette": 12}}, {"model": "cookbook.commentaire", "pk": 11, "fields": {"user": 1, "texte": "Oui bien s\u00fbr ! ", "date": "2017-06-29", "recette": 13}}, {"model": "cookbook.commentaire", "pk": 12, "fields": {"user": 2, "texte": "Oh qu'est ce que vous n'avez pas aim\u00e9 ? :/", "date": "2017-06-29", "recette": 11}}, {"model": "cookbook.commentaire", "pk": 13, "fields": {"user": 2, "texte": "Superbe recette ! Bravo ", "date": "2017-06-29", "recette": 17}}, {"model": "cookbook.commentaire", "pk": 14, "fields": {"user": 3, "texte": "Merci Beaucoup !!", "date": "2017-06-29", "recette": 17}}, {"model": "cookbook.commentaire", "pk": 15, "fields": {"user": 3, "texte": "Bien !", "date": "2017-06-29", "recette": 10}}, {"model": "cookbook.commentaire", "pk": 16, "fields": {"user": 3, "texte": ":)", "date": "2017-06-29", "recette": 12}}, {"model": "cookbook.commentaire", "pk": 17, "fields": {"user": 3, "texte": "je n'ai pas dig\u00e9r\u00e9e la sauce salsa ;(", "date": "2017-06-29", "recette": 11}}, {"model": "cookbook.note", "pk": 5, "fields": {"user": 2, "note": 6, "recette": 13}}, {"model": "cookbook.note", "pk": 6, "fields": {"user": 2, "note": 3, "recette": 11}}, {"model": "cookbook.note", "pk": 7, "fields": {"user": 3, "note": 6, "recette": 11}}, {"model": "cookbook.note", "pk": 8, "fields": {"user": 2, "note": 10, "recette": 17}}, {"model": "cookbook.note", "pk": 9, "fields": {"user": 3, "note": 10, "recette": 17}}, {"model": "cookbook.note", "pk": 10, "fields": {"user": 3, "note": 8, "recette": 10}}, {"model": "cookbook.note", "pk": 11, "fields": {"user": 3, "note": 8, "recette": 12}}, {"model": "admin.logentry", "pk": 1, "fields": {"action_time": "2017-06-27T15:46:57.527Z", "user": 1, "content_type": 8, "object_id": "1", "object_repr": "Commentaire object", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 2, "fields": {"action_time": "2017-06-27T15:47:25.586Z", "user": 1, "content_type": 8, "object_id": "2", "object_repr": "Commentaire object", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 3, "fields": {"action_time": "2017-06-27T15:47:40.348Z", "user": 1, "content_type": 8, "object_id": "3", "object_repr": "Commentaire object", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 4, "fields": {"action_time": "2017-06-27T15:48:11.340Z", "user": 1, "content_type": 9, "object_id": "1", "object_repr": "Note object", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 5, "fields": {"action_time": "2017-06-27T15:48:21.570Z", "user": 1, "content_type": 9, "object_id": "2", "object_repr": "Note object", "action_flag": 1, "change_message": "[{\"added\": {}}]"}}, {"model": "admin.logentry", "pk": 6, "fields": {"action_time": "2017-06-27T15:50:38.936Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "brownies", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"temps_prepa\", \"temps_cuisson\", \"temps_repos\"]}}]"}}, {"model": "admin.logentry", "pk": 7, "fields": {"action_time": "2017-06-28T09:40:45.950Z", "user": 1, "content_type": 7, "object_id": "7", "object_repr": "carottes rap\u00e9es", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 8, "fields": {"action_time": "2017-06-28T09:40:46.174Z", "user": 1, "content_type": 7, "object_id": "6", "object_repr": "carottes rap\u00e9es", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 9, "fields": {"action_time": "2017-06-28T09:40:46.407Z", "user": 1, "content_type": 7, "object_id": "5", "object_repr": "carottes rap\u00e9es", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 10, "fields": {"action_time": "2017-06-29T09:09:22.304Z", "user": 1, "content_type": 7, "object_id": "16", "object_repr": "Risotto au chorizo et dinde", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"}}, {"model": "admin.logentry", "pk": 11, "fields": {"action_time": "2017-06-29T09:09:27.339Z", "user": 1, "content_type": 7, "object_id": "13", "object_repr": "Pommes sur \u00eele flottante", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"}}, {"model": "admin.logentry", "pk": 12, "fields": {"action_time": "2017-06-29T09:10:15.640Z", "user": 1, "content_type": 8, "object_id": "9", "object_repr": "Commentaire object", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"}}, {"model": "admin.logentry", "pk": 13, "fields": {"action_time": "2017-06-29T09:10:19.663Z", "user": 1, "content_type": 8, "object_id": "8", "object_repr": "Commentaire object", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"}}, {"model": "admin.logentry", "pk": 14, "fields": {"action_time": "2017-06-29T09:11:18.509Z", "user": 1, "content_type": 7, "object_id": "13", "object_repr": "Pommes sur \u00eele flottante", "action_flag": 2, "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"}}]
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$DaPnfkoUeYpg$drHkLeFvgVXRwgfApMvZHDz992epPke/W10xJA51Gq4=",
+        "last_login": "2017-06-29T10:02:55.235Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-06-29T09:49:42.666Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$Drh23KNrIE9v$xwcbrZt3uFMFNZtYUOYLbRXMmU+LHA1ymjdvrVjM9WA=",
+        "last_login": "2017-06-29T10:04:02.705Z",
+        "is_superuser": false,
+        "username": "julien",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-06-29T09:52:49.072Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$PFxgyzqWz7zT$QNr/DKHoX8e9PePuacIt0VxaicdNxDSqE3QTSKlOzbU=",
+        "last_login": "2017-06-29T09:55:18.675Z",
+        "is_superuser": false,
+        "username": "clarisse",
+        "first_name": "col",
+        "last_name": "clarisse ",
+        "email": "clacol@i2l.fr",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-06-29T09:55:17.911Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$36000$CIAOEXWnYS32$b0YRygXFzn9klCxDFRp4CVVWAxv/Q9zgbyvNsxms7zA=",
+        "last_login": "2017-06-29T09:59:47.620Z",
+        "is_superuser": false,
+        "username": "Alfred",
+        "first_name": "hitckockeuh",
+        "last_name": "alfred",
+        "email": "alfred@i2l.fr",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-06-29T09:59:46.567Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "896a50a4y1389ixkdydtdnwy2x4u9lnt",
+    "fields": {
+        "session_data": "MTRkNmE3MmJlMjgxNThjNzNlOWMxNDk5YTU2NjZjYmFjNzA5NDg4MTp7Il9hdXRoX3VzZXJfaWQiOiI4IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI2MWYyYjg5YjNjOWVkZTA2NjRhOTczMjNjZGUzNWI5YjgwOTJjNzhkIn0=",
+        "expire_date": "2017-07-13T10:04:03.007Z"
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 19,
+    "fields": {
+        "titre": "Entr\u00e9e Mexicaine",
+        "type": "E",
+        "difficulte": "1",
+        "cout": 10,
+        "temps_prepa": 15,
+        "temps_cuisson": null,
+        "temps_repos": 240,
+        "etape": "M\u00e9langer dans un mixeur l'avocat, le fromage, la cr\u00e8me fra\u00eeche et le citron pour obtenir une p\u00e2te homog\u00e8ne.\r\nFaire cuire le bacon et le couper finement.\r\nTamiser le jus de la sauce salsa.\r\nDisposer sur une grande assiette ronde en couche successive la pr\u00e9paration du mixeur, puis tous les ingr\u00e9dients de la pr\u00e9paration en finissant par le fromage r\u00e2p\u00e9.\r\nR\u00e9frig\u00e9rer minimum 4 h.",
+        "ingredients": "- 1 avocat m\u00fbr\r\n- 1 paquet de fromage frais (type St Moret)\r\n- 125 ml de cr\u00e8me fra\u00eeche \u00e9paisse\r\n- 1 cuill\u00e8re \u00e0 caf\u00e9 de jus de citron vert\r\n- 350 ml de sauce salsa ( moyennement \u00e9pic\u00e9e)\r\n- 1 tomate\r\n- 20 olives vertes farcies tranch\u00e9es\r\n- 20 olives noires tranch\u00e9es\r\n- 5 ou 6 tranches de bacon\r\n- 4 \u00e9chalotes\r\n- 1 bol de fromage r\u00e2p\u00e9 (Cheddar)",
+        "user": [
+            "julien"
+        ]
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 20,
+    "fields": {
+        "titre": "Entr\u00e9e chaude \u00e0 la bisque de homard",
+        "type": "E",
+        "difficulte": "1",
+        "cout": 10,
+        "temps_prepa": 10,
+        "temps_cuisson": 30,
+        "temps_repos": null,
+        "etape": "Mixer le tout, mettre dans un moule \u00e0 couronne bien beurr\u00e9.\r\nFaire cuire au bain marie environ 30 minutes \u00e0 200\u00b0C (thermostat 7).\r\nServir chaud accompagn\u00e9 d'une sauce \u00e0 la cr\u00e8me avec du concentr\u00e9 de tomate et des petites crevettes.",
+        "ingredients": "6 personnes :\r\n- 450 g de bisque de homard\r\n- 6 oeufs\r\n- 1 verre de cr\u00e8me fra\u00eeche\r\n- 3 cuill\u00e8res \u00e0 soupe de maizena\r\n- 1 bo\u00eete de concentr\u00e9 de tomate",
+        "user": [
+            "julien"
+        ]
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 21,
+    "fields": {
+        "titre": "Pa\u00eblla fruits de mer, chorizo et poulet",
+        "type": "P",
+        "difficulte": "2",
+        "cout": 25,
+        "temps_prepa": 35,
+        "temps_cuisson": 35,
+        "temps_repos": null,
+        "etape": "D\u00e9couper le poulet en morceaux, nettoyer les moules, \u00e9mincer le chorizo et les poivrons, peler et concasser les tomates, hacher les oignons et l'ail.\r\nMettre l'huile dans le plat et faire dorer les morceaux de poulet. Ajouter les calamars, les oignons tout en remuant puis mettre les tomates, les poivrons, l'ail, le safran, le sel et le poivre. Laisser cuire 5 minutes en remuant avant d'incorporer le riz, le chorizo et le bouillon.\r\nY plonger les crevettes et les moules, porter \u00e0 \u00e9bullition puis laisser cuire environ 30-35 minutes.",
+        "ingredients": "8 personnes :\r\n 500 g de riz\r\n- 1 kg de filet de poulet\r\n- 500 g de calamars\r\n- 1 l de moules\r\n- 15 grosses crevettes\r\n- 1 chorizo\r\n- 2 poivrons\r\n- 1 kg de tomates\r\n- 2 oignons\r\n- 3 gousses d'l'ail\r\n- 3 doses de safran\r\n- 1 l de bouillon de volaille\r\n- 5 cuill\u00e8res \u00e0 soupe d'huile d'olive\r\n- sel et poivre",
+        "user": [
+            "clarisse"
+        ]
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 22,
+    "fields": {
+        "titre": "Pommes sur \u00eele flottante",
+        "type": "D",
+        "difficulte": "1",
+        "cout": 10,
+        "temps_prepa": 30,
+        "temps_cuisson": 10,
+        "temps_repos": null,
+        "etape": "Pr\u00e9parez un sirop avec l'eau, 250 g de sucre et une grosse cuiller \u00e0 soupe de cannelle. Faites bouillir.\r\nPendant ce temps, pelez les pommes, enlevez les p\u00e9pins avec une petite cuiller sans percer le fond.\r\nLorsque le sirop est pr\u00eat, plongez les pommes dedans 10 ou 15 min selon leur grosseur. Elles doivent \u00eatre moelleuses.\r\nEgouttez-les et r\u00e9servez.\r\nPr\u00e9parez la cr\u00e8me. Dans des saladiers, s\u00e9parez le blanc des jaunes.\r\nFaites bouillir le lait, avec les 100 g de sucre. Battez les blancs en neige.\r\nAvec une grosse cuiller, plongez des boules de blancs en neige dans le lait pendant 3 min. Sortez-les sur un papier absorbant.\r\nEnsuite, d\u00e9layez les 6 jaunes d'oeuf avec le lait refroidi. Mettez sur le feu et faites chauffer sans laisser bouillir. Tournez sans arr\u00eat.\r\nLorsque la cr\u00e8me \u00e0 \u00e9paissie, mettez la dans un plat, d\u00e9posez les pommes sur la cr\u00e8me puis remplissez et nappez celles-ci avec la cr\u00e8me.\r\nPour finir, posez sur chacune un petit chapeau de blanc \u00e0 la neige.\r\nJe d\u00e9core avec une cerise confite ou des petits bouts d'ang\u00e9lique pour faire les queues et des petites feuilles de menthe.",
+        "ingredients": "6 personnes :\r\n- 6 pommes\r\n- 350 g de sucre\r\n- 75 cl d'eau\r\n- 75 cl de lait\r\n- 6 oeufs\r\n- 1 cuiller \u00e0 soupe de cannelle",
+        "user": [
+            "clarisse"
+        ]
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 23,
+    "fields": {
+        "titre": "Poulet r\u00f4ti et ses pommes de terre",
+        "type": "P",
+        "difficulte": "1",
+        "cout": 15,
+        "temps_prepa": 15,
+        "temps_cuisson": 60,
+        "temps_repos": null,
+        "etape": "Cette recette est extr\u00eamement simple.\r\nIl vous suffit de mettre le poulet dans un plat \u00e0 four.\r\nPendant ce temps-l\u00e0, pr\u00e9chauffer le four \u00e0 210-240\u00b0C (thermostat 7-8).\r\nPrenez le beurre et d\u00e9coupez-le en morceaux pour le mettre sur le poulet un peu partout.\r\nSalez, poivrez et herbez la b\u00eate...\r\nEnsuite, attaquez-vous au patates... Il faut les \u00e9plucher et puis les faire tremper dans l'eau pour les rincer et les essuyer.\r\nIl faut apr\u00e8s les d\u00e9couper.\r\nAlors, l\u00e0, c'est comme vous le sentez... faites de jolies formes si vous le voulez, moi, je fais simplement des carr\u00e9s.\r\nEn fait, je prends la pomme de terre, la d\u00e9coupe en longueur, la tourne, et puis apr\u00e8s la d\u00e9coupe dans l'autre longueur et puis je la tourne dans l'autre sens pour la d\u00e9couper en largeur... et \u00e7a, \u00e7a fait des sortes de carr\u00e9s.\r\nEt je mets toutes les pommes de terres dans le plat autour du poulet. Les sale.\r\nEt puis direction le four apr\u00e8s avoir arros\u00e9 le tout d'un demi-verre d'eau.\r\nJe laisse cuire 1h15... plus ou moins en fonction du poulet et des pommes de terre.\r\nJe le tourne r\u00e9guli\u00e8rement pendant la cuisson, sur chaque face... Et puis s'il le faut je r\u00e9arrose d'eau... comme \u00e7a, les pommes de terre baignent dans le jus.\r\nUne fois que c'est pr\u00eat et bien il suffit de servir !",
+        "ingredients": "4 personnes :\r\n- 1 Poulet \u00e0 r\u00f4tir d'environ 1,2 kg\r\n- 50 g de beurre\r\n- herbes de Provence\r\n- sel\r\n- poivre\r\n- 20 pommes de terre",
+        "user": [
+            "clarisse"
+        ]
+    }
+},
+{
+    "model": "cookbook.recette",
+    "pk": 24,
+    "fields": {
+        "titre": "Donuts faciles (rosquitas au Chili)",
+        "type": "D",
+        "difficulte": "1",
+        "cout": 10,
+        "temps_prepa": 10,
+        "temps_cuisson": 5,
+        "temps_repos": 2,
+        "etape": "M\u00e9langer la farine et la levure, ajouter le beurre puis les oeufs, les \u00e9corces de citron et enfin le lait concentr\u00e9. La p\u00e2te ne doit pas coller aux mains.\r\nSi besoin, rajouter de la farine jusqu'\u00e0 ce que \u00e7a ne colle plus.\r\nFormer avec les mains des boudins d'environs 10 cm et les fermer en anneaux (on peut aussi faire plus simplement des galettes un peu \u00e9paisses.)\r\nFaire au fur et \u00e0 mesure. Je les frits dans un wok avec 1 l d'huile.",
+        "ingredients": "10 personnes : \r\n- 1 kg de farine + 125 g\r\n- 2 cuill\u00e8res \u00e0 caf\u00e9 de levure chimique\r\n- 100 g de beurre\r\n- 2 oeufs\r\n- 2 cuill\u00e8res \u00e0 caf\u00e9 de zeste de citron (facultatif, ou autre essence)\r\n- 400 g de lait concentr\u00e9 sucr\u00e9 (1 petite bo\u00eete)\r\n- huile pour frire",
+        "user": [
+            "Alfred"
+        ]
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "clarisse"
+        ],
+        "texte": "Bof",
+        "date": "2017-06-29",
+        "recette": 19
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 20,
+    "fields": {
+        "user": [
+            "clarisse"
+        ],
+        "texte": "tr\u00e8s bonne recette !\r\n",
+        "date": "2017-06-29",
+        "recette": 20
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 21,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "texte": "Le homard c'est cher",
+        "date": "2017-06-29",
+        "recette": 20
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 22,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "texte": "J'adore !!!!",
+        "date": "2017-06-29",
+        "recette": 21
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 23,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "texte": "J'aime pas du tout",
+        "date": "2017-06-29",
+        "recette": 19
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 24,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "texte": "En plus y'a pas de photo",
+        "date": "2017-06-29",
+        "recette": 19
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 25,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "texte": "Ma recette est trop bien ! N'h\u00e9sitez pas !",
+        "date": "2017-06-29",
+        "recette": 24
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 26,
+    "fields": {
+        "user": [
+            "julien"
+        ],
+        "texte": "Super !",
+        "date": "2017-06-29",
+        "recette": 21
+    }
+},
+{
+    "model": "cookbook.commentaire",
+    "pk": 27,
+    "fields": {
+        "user": [
+            "julien"
+        ],
+        "texte": "Vite fait !",
+        "date": "2017-06-29",
+        "recette": 24
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "clarisse"
+        ],
+        "note": 4,
+        "recette": 19
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "clarisse"
+        ],
+        "note": 9,
+        "recette": 20
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "note": 7,
+        "recette": 20
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "note": 10,
+        "recette": 21
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "Alfred"
+        ],
+        "note": 2,
+        "recette": 19
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 18,
+    "fields": {
+        "user": [
+            "julien"
+        ],
+        "note": 9,
+        "recette": 21
+    }
+},
+{
+    "model": "cookbook.note",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "julien"
+        ],
+        "note": 6,
+        "recette": 24
+    }
+},
+{
+    "model": "cookbook.recetteimage",
+    "pk": 17,
+    "fields": {
+        "recette": 20,
+        "file": "images/8cffdbbf-2f10-4448-9101-8d75d0bdd2c5_normal_DAorKVQ.jpg"
+    }
+},
+{
+    "model": "cookbook.recetteimage",
+    "pk": 18,
+    "fields": {
+        "recette": 21,
+        "file": "images/c3241a73-d7b6-427f-948d-f2d46a8e2d1b_normal_jv2DPWo.jpg"
+    }
+},
+{
+    "model": "cookbook.recetteimage",
+    "pk": 19,
+    "fields": {
+        "recette": 22,
+        "file": "images/6ec77bf2-0278-41be-97d3-3689ea57ecaa_normal_mYvbXBA.jpg"
+    }
+},
+{
+    "model": "cookbook.recetteimage",
+    "pk": 20,
+    "fields": {
+        "recette": 23,
+        "file": "images/cfca243f-c68d-40e8-8649-bef66bcacadf_normal.jpg"
+    }
+},
+{
+    "model": "cookbook.recetteimage",
+    "pk": 21,
+    "fields": {
+        "recette": 24,
+        "file": "images/7298ced0-03f1-4131-aa4d-13050ed1d4a4_normal_jz9VHZn.jpg"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2017-06-29T09:50:11.301Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "cookbook",
+            "recette"
+        ],
+        "object_id": "19",
+        "object_repr": "Entr\u00e9e Mexicaine",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2017-06-29T09:52:35.344Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "cookbook",
+            "recette"
+        ],
+        "object_id": "19",
+        "object_repr": "Entr\u00e9e Mexicaine",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"temps_repos\", \"etape\", \"ingredients\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2017-06-29T09:52:49.113Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "8",
+        "object_repr": "julien",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2017-06-29T10:03:15.010Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "cookbook",
+            "recette"
+        ],
+        "object_id": "19",
+        "object_repr": "Entr\u00e9e Mexicaine",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2017-06-29T10:03:21.741Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "cookbook",
+            "recette"
+        ],
+        "object_id": "20",
+        "object_repr": "Entr\u00e9e chaude \u00e0 la bisque de homard",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"user\"]}}]"
+    }
+}
+]
